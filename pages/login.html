@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/styles/global.css">
+   <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Tela Login</title>
+</head>
+<body>
+
+    <header class="header">
+        <a href="/index.html">
+            <h1 class="header-title">SaúdePrime</h1>
+        </a>
+        <p>Maximize a eficiência da sua clínica com nossa solução de gestão</p>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h1>Login</h1>
+
+            <div id="msgError" role="alert"></div>
+
+            <form class="form">
+                <div class="label-float">
+                    <input type="email" id="email" placeholder="" required>
+                    <label id="emailLabel" for="email">Email</label>
+                </div>
+                <div class="label-float">
+                    <input type="password" id="senha" placeholder="" required>
+                    <label id="senhaLabel" for="senha">Senha</label>
+                    <i id="olho" class="fa-solid fa-eye" aria-label="Mostrar/ocultar senha"></i>
+                    <div class="justify-center">
+                        <button type="button" onclick="entrar()">Entrar</button>
+                    </div>
+                    <p id="link">Não tem uma conta?<a href="/pages/cadastro.html" aria-label="Ir para página de cadastro">Cadastra-se</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/scripts/login.js"></script>
+</body>
+</html>
