@@ -4,6 +4,22 @@
 
 Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado III do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
 
+## Equipe do Projeto
+
+Valdeilson Bezerra de Lima - 2023010306
+
+Marcondes Alves Duarte - 2023010217
+
+Rayane Amaro dos Santos - 2023010280
+
+
+## EP1: Configuração da Integração Contínua (CI)
+
+Nesta primeira fase do projeto, configuramos um processo de automação para garantir a qualidade e o padrão do nosso código JavaScript.
+**Objetivo do Processo de CI:** O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação do nosso código-fonte. Para isso, implementamos uma tarefa de ________ com a ferramenta _______
+**Configuração:** Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/workflows/main.yml`. Este workflow é acionado automaticamente sempre que um novo `push` ou `pull request` é feito para a branch `main`. Ele executa a verificação do código e nos notifica sobre o sucesso ou falha da análise.
+
+
 ## Funcionalidades Principais
 
 * Agendamento de consultas online.
