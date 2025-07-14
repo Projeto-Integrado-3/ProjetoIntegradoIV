@@ -19,7 +19,6 @@ jobs:
           prettier_options: "--check . --ignore-path ./.gitignore"
 
       - name: Validate HTML
-        uses: anra0/html-validator-action@v1
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
-          fail_on_errors: "yes"
-          files: "pages/dashboard/dashboard.html,pages/dashboard/formAgendamento.html,pages/dashboard/historico.html"
+          root: ./pages/
