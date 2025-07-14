@@ -15,11 +15,31 @@ Rayane Amaro dos Santos - 2023010280
 
 ## EP1: Configuração da Integração Contínua (CI)
 
-Nesta primeira fase do projeto, configuramos um processo de automação para garantir a qualidade e o padrão do nosso código JavaScript.
+**Objetivo do Processo de CI:**
 
-**Objetivo do Processo de CI:** O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação do nosso código-fonte. Para isso, implementamos uma tarefa de ________ com a ferramenta _______
+O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos duas tarefas automatizadas:
 
-**Configuração:** Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/workflows/main.yml`. Este workflow é acionado automaticamente sempre que um novo `push` ou `pull request` é feito para a branch `main`. Ele executa a verificação do código e nos notifica sobre o sucesso ou falha da análise.
+1.  **Linting com Prettier:** Garante que todo o código (HTML, CSS, JavaScript) siga um padrão de formatação consistente.
+2.  **Validação de HTML:** Verifica se os arquivos HTML do dashboard (`dashboard.html`, `formAgendamento.html`, `historico.html`) possuem uma sintaxe válida.
+
+**Configuração:**
+
+Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/workflows/ci.yml`. Este workflow é acionado automaticamente sempre que um novo `push` ou `pull request` é feito para a branch `main`. Ele executa as tarefas de verificação e nos notifica sobre o sucesso ou falha da análise, ajudando a manter a integridade do projeto.
+
+## [Componente Extensionista] O que é Integração Contínua (CI) e por que é importante?
+
+**Integração Contínua (CI)** é uma prática de desenvolvimento de software onde os desenvolvedores integram seu código novo a um repositório compartilhado várias vezes ao dia. Cada integração é então verificada por um processo automatizado que compila o código e executa testes.
+
+**Por que isso é importante para quem está aprendendo a programar?**
+
+Para estudantes e novos programadores, adotar a CI desde cedo traz vários benefícios:
+
+*   **Feedback Rápido:** Você descobre erros e problemas de compatibilidade quase que imediatamente, em vez de semanas depois. Isso torna a correção mais fácil e rápida.
+*   **Aprender Boas Práticas:** Ajuda a criar o hábito de escrever código mais limpo, testado e bem formatado, que são habilidades essenciais no mercado de trabalho.
+*   **Confiança para Mudar:** Com testes automatizados, você pode fazer alterações e refatorar seu código com mais segurança, sabendo que o sistema de CI vai alertar se algo quebrar.
+*   **Colaboração Melhorada:** Em projetos de equipe, a CI garante que o código de todos os membros funcione bem junto, evitando o famoso "na minha máquina funciona".
+
+Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, permitindo que você se concentre em aprender, criar novas funcionalidades e se tornar um desenvolvedor melhor.
 
 
 ## Funcionalidades Principais
@@ -142,15 +162,3 @@ Este projeto está sob a licença MIT. Consulte o arquivo MIT License para mais 
 * Tela de Gerenciamento de Exames
 
 ![Captura de tela de 2025-05-01 17-33-06](https://github.com/user-attachments/assets/11628846-d319-41aa-8181-08e9ecfbb3e8)
-
-
-
-
-
-
-
-
-
-
-
-
