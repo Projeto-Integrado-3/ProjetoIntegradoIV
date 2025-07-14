@@ -142,15 +142,13 @@ p {
   padding: 5px;
 }
 
-
-
 /* Media Queries para Responsividade */
 @media (max-width: 600px) {
   .card {
-      width: 95%;
+    width: 95%;
   }
 
-  .container{
-      margin-top: 20px;
+  .container {
+    margin-top: 20px;
   }
 }
