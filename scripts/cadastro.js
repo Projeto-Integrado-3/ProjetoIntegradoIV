@@ -23,8 +23,48 @@ let validConfirmSenha = false;
 let msgError = document.querySelector("#msgError");
 let msgSuccess = document.querySelector("#msgSuccess");
 
+
 function validateEmail(email) {
   return /\S+@\S+\.\S+/.test(email);
+}
+
+// Funções de validação para testes
+function validateNome(nome) {
+  return typeof nome === 'string' && nome.length > 2;
+}
+
+function validateSobrenome(sobrenome) {
+  return typeof sobrenome === 'string' && sobrenome.length > 2;
+}
+
+function validateSenha(senha) {
+  return typeof senha === 'string' && senha.length >= 6;
+}
+
+function validateConfirmSenha(senha, confirmarsenha) {
+  return senha === confirmarsenha;
+}
+
+function validateCadastro({ nome, sobrenome, email, senha, confirmarsenha }) {
+  return (
+    validateNome(nome) &&
+    validateSobrenome(sobrenome) &&
+    validateEmail(email) &&
+    validateSenha(senha) &&
+    validateConfirmSenha(senha, confirmarsenha)
+  );
+}
+
+// Export para testes
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    validateEmail,
+    validateNome,
+    validateSobrenome,
+    validateSenha,
+    validateConfirmSenha,
+    validateCadastro
+  };
 }
 
 nome.addEventListener("keyup", () => {
