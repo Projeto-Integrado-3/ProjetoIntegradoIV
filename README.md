@@ -1,8 +1,6 @@
 # Sistema de Agendamento De Consultas Médicas
 
-
 ![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)
-
 
 ## Descrição
 
