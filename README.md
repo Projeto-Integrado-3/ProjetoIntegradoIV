@@ -1,5 +1,7 @@
 # Sistema de Agendamento De Consultas Médicas
 
+![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)
+
 ## Descrição
 
 Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado III do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
@@ -57,13 +59,14 @@ Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, 
 - **Frontend:** HTML5, CSS3, JavaScript.
 - **Banco de dados:** LocalStorage (para persistência de dados no navegador).
 - **Bibliotecas:** SweetAlert2 (para notificações e alertas).
+- **Qualidade e Automação:** Prettier, GitHub Actions.
 
 ## Instalação
 
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/sistema-agendamento-consultas.git
+   git clone https://github.com/seu-usuario//ProjetoIntegradoIV.git
    ```
 
 2. Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
