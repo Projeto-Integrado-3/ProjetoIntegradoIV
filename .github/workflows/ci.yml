@@ -35,7 +35,7 @@ jobs:
         run: npx prettier --check . --ignore-path .gitignore
 
       - name: Verificar padrões com ESLint
-        run: npx eslint . --ext .js --ignore-path .gitignore
+        run: npx eslint . --ext .js
 
       - name: Validar HTML
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
