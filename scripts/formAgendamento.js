@@ -1,17 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const pacienteInput = document.getElementById("paciente");
-  const especialidadeSelect = document.getElementById("especialidade");
-  const profissionalSelect = document.getElementById("profissional");
-  const horarioSelect = document.getElementById("horario");
-  const dataBtns = document.querySelectorAll(".data-btn");
-  const confirmacaoInfo = document.querySelector(".confirmacao-info");
+document.addEventListener('DOMContentLoaded', function () {
+  const pacienteInput = document.getElementById('paciente');
+  const especialidadeSelect = document.getElementById('especialidade');
+  const profissionalSelect = document.getElementById('profissional');
+  const horarioSelect = document.getElementById('horario');
+  const dataBtns = document.querySelectorAll('.data-btn');
+  const confirmacaoInfo = document.querySelector('.confirmacao-info');
 
   let selectedDate = null;
 
   dataBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      dataBtns.forEach((b) => b.classList.remove("selected"));
-      this.classList.add("selected");
+    btn.addEventListener('click', function () {
+      dataBtns.forEach((b) => b.classList.remove('selected'));
+      this.classList.add('selected');
       const year = new Date().getFullYear();
       selectedDate = `${this.textContent}/${year}`;
       updateConfirmation();
@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   [especialidadeSelect, profissionalSelect, horarioSelect].forEach((select) => {
-    select.addEventListener("change", updateConfirmation);
+    select.addEventListener('change', updateConfirmation);
   });
 
   function formatTime(time) {
-    return time.replace(/(\d{2})(\d{2})/, "$1:$2");
+    return time.replace(/(\d{2})(\d{2})/, '$1:$2');
   }
 
   function updateConfirmation() {
@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document
-    .querySelector(".confirmar-btn")
-    .addEventListener("click", function () {
+    .querySelector('.confirmar-btn')
+    .addEventListener('click', function () {
       if (
         !especialidadeSelect.value ||
         !profissionalSelect.value ||
@@ -54,16 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
         !horarioSelect.value
       ) {
         Swal.fire({
-          icon: "error",
-          title: "Erro!",
-          text: "Por favor, preencha todos os campos.",
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Por favor, preencha todos os campos.',
         });
         return;
       }
 
       const appointmentData = {
         paciente: pacienteInput.value,
-        idade: document.getElementById("idade").value,
+        idade: document.getElementById('idade').value,
         especialidade: especialidadeSelect.value,
         profissional:
           profissionalSelect.options[profissionalSelect.selectedIndex].text,
@@ -72,20 +72,20 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       const appointments =
-        JSON.parse(localStorage.getItem("appointments")) ?? [];
+        JSON.parse(localStorage.getItem('appointments')) ?? [];
 
       appointments.push(appointmentData);
 
-      localStorage.setItem("appointments", JSON.stringify(appointments));
+      localStorage.setItem('appointments', JSON.stringify(appointments));
 
       Swal.fire({
-        icon: "success",
-        title: "Agendamento Confirmado!",
-        text: "O agendamento foi salvo com sucesso.",
+        icon: 'success',
+        title: 'Agendamento Confirmado!',
+        text: 'O agendamento foi salvo com sucesso.',
         timer: 2000,
         showConfirmButton: false,
       }).then(() => {
-        window.location.href = "/pages/agenda.html";
+        window.location.href = '/pages/agenda.html';
       });
     });
 });
