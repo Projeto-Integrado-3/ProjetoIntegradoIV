@@ -1,0 +1,13 @@
+{
+  "name": "ProjetoIntegradoIV",
+  "version": "1.0.0",
+  "description": "Projeto da disciplina de Projeto Integrado IV.",
+  "scripts": {
+    "format:check": "prettier --check .",
+    "lint": "eslint . --ignore-path ./.gitignore"
+  },
+  "devDependencies": {
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8"
+  }
+}

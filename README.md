@@ -14,14 +14,17 @@ Marcondes Alves Duarte - 2023010217
 
 Rayane Amaro dos Santos - 2023010280
 
+
 ## EP1: Configuração da Integração Contínua (CI)
 
 **Objetivo do Processo de CI:**
 
-O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos duas tarefas automatizadas:
+O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos duas tarefas automatizadas principais:
 
-1.  **Linting com Prettier:** Garante que todo o código (HTML, CSS, JavaScript) siga um padrão de formatação consistente.
-2.  **Validação de HTML:** Verifica se os arquivos HTML do dashboard (`dashboard.html`, `formAgendamento.html`, `historico.html`) possuem uma sintaxe válida.
+1.  **Verificação de formatação com Prettier:** Garante que todo o código (HTML, CSS, JavaScript) siga um padrão de formatação consistente, facilitando a leitura e manutenção do projeto.
+2.  **Verificação de qualidade de código com ESLint:** Analisa o código JavaScript para identificar possíveis erros, más práticas e garantir que padrões de qualidade sejam seguidos.
+
+Além dessas, também é realizada a **validação de HTML** para garantir que os arquivos do dashboard (`dashboard.html`, `formAgendamento.html`, `historico.html`) estejam com sintaxe válida.
 
 **Configuração:**
 
@@ -59,7 +62,7 @@ Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, 
 - **Frontend:** HTML5, CSS3, JavaScript.
 - **Banco de dados:** LocalStorage (para persistência de dados no navegador).
 - **Bibliotecas:** SweetAlert2 (para notificações e alertas).
-- **Qualidade e Automação:** Prettier, GitHub Actions.
+- **Qualidade e Automação:** Prettier, ESLint, GitHub Actions.
 
 ## Instalação
 

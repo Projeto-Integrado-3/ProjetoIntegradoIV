@@ -7,18 +7,37 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  # Nome mais descritivo para o trabalho
+  verify-code: 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
 
-      - name: Run Prettier
-        uses: creyD/prettier_action@v4.3
+      - name: Configurar ambiente Node.js
+        uses: actions/setup-node@v4
         with:
-          prettier_options: "--check . --ignore-path ./.gitignore"
+          node-version: '20'
 
-      - name: Validate HTML
+      - name: Configurar cache do npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Verificar formatação com Prettier
+        run: npx prettier --check . --ignore-path .gitignore
+
+      - name: Verificar padrões com ESLint
+        run: npx eslint . --ext .js --ignore-path .gitignore
+
+      - name: Validar HTML
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
           root: ./pages/
