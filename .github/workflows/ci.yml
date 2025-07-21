@@ -8,7 +8,7 @@ on:
 
 jobs:
   # Nome mais descritivo para o trabalho
-  verify-code: 
+  verify-code:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: Configurar ambiente Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Configurar cache do npm
         uses: actions/cache@v4

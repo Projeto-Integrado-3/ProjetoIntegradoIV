@@ -14,7 +14,6 @@ Marcondes Alves Duarte - 2023010217
 
 Rayane Amaro dos Santos - 2023010280
 
-
 ## EP1: Configuração da Integração Contínua (CI)
 
 **Objetivo do Processo de CI:**
