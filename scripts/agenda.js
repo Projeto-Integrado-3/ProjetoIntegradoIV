@@ -1,13 +1,13 @@
-window.addEventListener('load', function () {
-  const appointmentsDiv = document.getElementById('appointments');
-  const appointments = JSON.parse(localStorage.getItem('appointments')) ?? [];
+window.addEventListener("load", function () {
+  const appointmentsDiv = document.getElementById("appointments");
+  const appointments = JSON.parse(localStorage.getItem("appointments")) ?? [];
 
   if (appointments.length === 0) {
-    appointmentsDiv.innerHTML = '<p>Não há agendamentos disponíveis.</p>';
+    appointmentsDiv.innerHTML = "<p>Não há agendamentos disponíveis.</p>";
     return;
   }
 
-  let appointmentsHTML = '';
+  let appointmentsHTML = "";
   appointments.forEach((appointment, index) => {
     appointmentsHTML += `
             <div class="appointment-card">
@@ -33,46 +33,46 @@ window.addEventListener('load', function () {
 });
 
 function formatDate(dateStr) {
-  if (!dateStr) return '';
-  const [day, month, year] = dateStr.split('/');
+  if (!dateStr) return "";
+  const [day, month, year] = dateStr.split("/");
   const months = {
-    '01': 'jan.',
-    '02': 'fev.',
-    '03': 'mar.',
-    '04': 'abr.',
-    '05': 'mai.',
-    '06': 'jun.',
-    '07': 'jul.',
-    '08': 'ago.',
-    '09': 'set.',
-    10: 'out.',
-    11: 'nov.',
-    12: 'dez.',
+    "01": "jan.",
+    "02": "fev.",
+    "03": "mar.",
+    "04": "abr.",
+    "05": "mai.",
+    "06": "jun.",
+    "07": "jul.",
+    "08": "ago.",
+    "09": "set.",
+    10: "out.",
+    11: "nov.",
+    12: "dez.",
   };
   return `${day} de ${months[month] || month} de ${year}`;
 }
 
 function handleAppointmentAction(action, appointmentIndex, event) {
-  const appointments = JSON.parse(localStorage.getItem('appointments')) ?? [];
-  const appointmentCard = event.target.closest('.appointment-card');
-  const statusElement = appointmentCard.querySelector('.status');
+  const appointments = JSON.parse(localStorage.getItem("appointments")) ?? [];
+  const appointmentCard = event.target.closest(".appointment-card");
+  const statusElement = appointmentCard.querySelector(".status");
 
   switch (action) {
-  case 'confirmar':
-    statusElement.textContent = 'Status: Confirmada';
-    statusElement.className = 'status confirmada';
-    appointmentCard.querySelector('.btn-confirmar').style.display = 'none';
-    break;
-  case 'cancelar':
-    statusElement.textContent = 'Status: Cancelada';
-    statusElement.className = 'status cancelada';
-    appointmentCard.querySelector('.action-buttons').innerHTML = `
+    case "confirmar":
+      statusElement.textContent = "Status: Confirmada";
+      statusElement.className = "status confirmada";
+      appointmentCard.querySelector(".btn-confirmar").style.display = "none";
+      break;
+    case "cancelar":
+      statusElement.textContent = "Status: Cancelada";
+      statusElement.className = "status cancelada";
+      appointmentCard.querySelector(".action-buttons").innerHTML = `
                 <button class="btn-visualizar" onclick="handleAppointmentAction('visualizar', ${appointmentIndex}, event)">Visualizar</button>
             `;
-    break;
-  case 'editar':
-    const appointment = appointments[appointmentIndex];
-    appointmentCard.innerHTML = `
+      break;
+    case "editar":
+      const appointment = appointments[appointmentIndex];
+      appointmentCard.innerHTML = `
                 <div class="edit-form">
                     <input type="text" id="edit-paciente" value="${appointment.paciente}" placeholder="Paciente">
                     <input type="number" id="edit-idade" value="${appointment.idade}" placeholder="Idade">
@@ -92,25 +92,25 @@ function handleAppointmentAction(action, appointmentIndex, event) {
                     </div>
                 </div>
             `;
-    break;
+      break;
   }
 
-  localStorage.setItem('appointments', JSON.stringify(appointments));
+  localStorage.setItem("appointments", JSON.stringify(appointments));
 }
 
 function saveEdit(index) {
-  const appointments = JSON.parse(localStorage.getItem('appointments')) ?? [];
+  const appointments = JSON.parse(localStorage.getItem("appointments")) ?? [];
 
   appointments[index] = {
-    paciente: document.getElementById('edit-paciente').value,
-    idade: document.getElementById('edit-idade').value,
-    especialidade: document.getElementById('edit-especialidade').value,
-    profissional: document.getElementById('edit-profissional').value,
-    data: document.getElementById('edit-data').value,
-    horario: document.getElementById('edit-horario').value,
+    paciente: document.getElementById("edit-paciente").value,
+    idade: document.getElementById("edit-idade").value,
+    especialidade: document.getElementById("edit-especialidade").value,
+    profissional: document.getElementById("edit-profissional").value,
+    data: document.getElementById("edit-data").value,
+    horario: document.getElementById("edit-horario").value,
   };
 
-  localStorage.setItem('appointments', JSON.stringify(appointments));
+  localStorage.setItem("appointments", JSON.stringify(appointments));
   window.location.reload();
 }
 
@@ -119,7 +119,7 @@ function cancelEdit(index) {
 }
 
 document
-  .getElementById('agendaFilter')
-  .addEventListener('change', function (e) {
-    console.log('Filter changed to:', e.target.value);
+  .getElementById("agendaFilter")
+  .addEventListener("change", function (e) {
+    console.log("Filter changed to:", e.target.value);
   });
