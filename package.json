@@ -1,7 +1,7 @@
 {
   "name": "projetointegradoiv",
   "version": "1.0.0",
-  "description": "Sistema de Agendamento de Consultas Médicas",
+  "description": "Sistema de Agendamento de Consultas",
   "type": "module",
   "main": "index.js",
   "scripts": {
