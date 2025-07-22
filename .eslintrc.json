@@ -13,5 +13,8 @@
     "no-console": "off",
     "semi": ["error", "always"],
     "quotes": ["error", "double"]
+  },
+  "globals": {
+    "Swal": "readonly"
   }
 }
