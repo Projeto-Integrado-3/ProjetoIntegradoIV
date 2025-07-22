@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint scripts/**/*.js",
-    "lint:fix": "eslint scripts/**/*.js --fix"
+    "lint:fix": "eslint scripts/**/*.js --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "author": "Projeto Integrado UFCA",
   "license": "MIT",

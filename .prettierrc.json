@@ -1,0 +1,31 @@
+{
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": false,
+  "printWidth": 80,
+  "tabWidth": 2
+}// eslint.config.js
+import globals from "globals";
+import js from "@eslint/js";
+import prettierConfig from "eslint-config-prettier";
+
+export default [
+  // Suas outras configurações podem vir aqui.
+  // Exemplo:
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        // Adicione outras globais se precisar, como 'alert', 'confirm', etc.
+        "alert": "readonly",
+        "confirm": "readonly",
+      },
+    },
+  },
+  js.configs.recommended,
+
+  // ADICIONE ESTA LINHA NO FINAL:
+  // Ela desativa as regras de estilo do ESLint que conflitam com o Prettier.
+  prettierConfig,
+];
