@@ -25,7 +25,7 @@ function validateEmail(email) {
 nome.addEventListener("keyup", () => {
   if (nome.value == "") {
     labelNome.setAttribute("style", "color: red");
-    labelNome.innerHTML = `Nome precisa ser preenchido`;
+    labelNome.innerHTML = "Nome precisa ser preenchido";
     nome.setAttribute("style", "border-color: red");
     validNome = false;
   } else {
@@ -39,7 +39,7 @@ nome.addEventListener("keyup", () => {
 cpf.addEventListener("keyup", () => {
   if (cpf.value.length !== 11) {
     labelCPF.setAttribute("style", "color: red");
-    labelCPF.innerHTML = `CPF precisa ter 11 dígitos`;
+    labelCPF.innerHTML = "CPF precisa ter 11 dígitos";
     cpf.setAttribute("style", "border-color: red");
     validCPF = false;
   } else {
@@ -53,7 +53,7 @@ cpf.addEventListener("keyup", () => {
 email.addEventListener("keyup", () => {
   if (!validateEmail(email.value)) {
     labelEmail.setAttribute("style", "color: red");
-    labelEmail.innerHTML = `Email inválido`;
+    labelEmail.innerHTML = "Email inválido";
     email.setAttribute("style", "border-color: red");
     validEmail = false;
   } else {
@@ -67,7 +67,7 @@ email.addEventListener("keyup", () => {
 telefone.addEventListener("keyup", () => {
   if (telefone.value.length < 10) {
     labelTelefone.setAttribute("style", "color: red");
-    labelTelefone.innerHTML = `Telefone precisa ter pelo menos 10 dígitos`;
+    labelTelefone.innerHTML = "Telefone precisa ter pelo menos 10 dígitos";
     telefone.setAttribute("style", "border-color: red");
     validTelefone = false;
   } else {
@@ -81,7 +81,7 @@ telefone.addEventListener("keyup", () => {
 endereco.addEventListener("keyup", () => {
   if (endereco.value === "") {
     labelEndereco.setAttribute("style", "color: red");
-    labelEndereco.innerHTML = `Endereço precisa ser preenchido`;
+    labelEndereco.innerHTML = "Endereço precisa ser preenchido";
     endereco.setAttribute("style", "border-color: red");
     validEndereco = false;
   } else {

@@ -75,7 +75,7 @@ function renderExames(status = "pendentes") {
         </div>
     `,
       )
-      .join("") || '<p class="no-results">Nenhum exame encontrado</p>';
+      .join("") || "<p class=\"no-results\">Nenhum exame encontrado</p>";
 }
 
 function editExame(id) {
@@ -137,5 +137,5 @@ function renderFilteredExames(containerId, filteredExames) {
         </div>
     `,
       )
-      .join("") || '<p class="no-results">Nenhum exame encontrado</p>';
+      .join("") || "<p class=\"no-results\">Nenhum exame encontrado</p>";
 }

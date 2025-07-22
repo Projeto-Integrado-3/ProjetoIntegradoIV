@@ -30,7 +30,7 @@ function validateEmail(email) {
 nome.addEventListener("keyup", () => {
   if (nome.value.length <= 2) {
     labelNome.setAttribute("style", "color:red");
-    labelNome.innerHTML = `Nome *insira no minimo 3 caracteres`;
+    labelNome.innerHTML = "Nome *insira no minimo 3 caracteres";
     nome.setAttribute("style", "border-color: red");
     validNome = false;
   } else {
@@ -44,7 +44,7 @@ nome.addEventListener("keyup", () => {
 email.addEventListener("keyup", () => {
   if (!validateEmail(email.value)) {
     labelEmail.setAttribute("style", "color:red");
-    labelEmail.innerHTML = `Email inválido`;
+    labelEmail.innerHTML = "Email inválido";
     email.setAttribute("style", "border-color: red");
     validEmail = false;
   } else {
@@ -58,7 +58,7 @@ email.addEventListener("keyup", () => {
 senha.addEventListener("keyup", () => {
   if (senha.value.length < 6) {
     labelSenha.setAttribute("style", "color:red");
-    labelSenha.innerHTML = `Senha *insira no mínimo 6 caracteres`;
+    labelSenha.innerHTML = "Senha *insira no mínimo 6 caracteres";
     senha.setAttribute("style", "border-color: red");
     validSenha = false;
   } else {
@@ -72,7 +72,7 @@ senha.addEventListener("keyup", () => {
 confirmarsenha.addEventListener("keyup", () => {
   if (senha.value !== confirmarsenha.value) {
     labelConfirmSenha.setAttribute("style", "color:red");
-    labelConfirmSenha.innerHTML = `As senhas não coincidem`;
+    labelConfirmSenha.innerHTML = "As senhas não coincidem";
     confirmarsenha.setAttribute("style", "border-color: red");
     validConfirmSenha = false;
   } else {
@@ -86,7 +86,7 @@ confirmarsenha.addEventListener("keyup", () => {
 sobrenome.addEventListener("keyup", () => {
   if (sobrenome.value.length <= 2) {
     labelSobrenome.setAttribute("style", "color:red");
-    labelSobrenome.innerHTML = `Sobrenome *insira no minimo 3 caracteres`;
+    labelSobrenome.innerHTML = "Sobrenome *insira no minimo 3 caracteres";
     sobrenome.setAttribute("style", "border-color: red");
     validSobrenome = false;
   } else {
