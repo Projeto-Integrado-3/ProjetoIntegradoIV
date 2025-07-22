@@ -63,14 +63,15 @@ function handleAppointmentAction(action, appointmentIndex, event) {
       statusElement.className = "status confirmada";
       appointmentCard.querySelector(".btn-confirmar").style.display = "none";
       break;
-    case "cancelar":
+    case "cancelar": {
       statusElement.textContent = "Status: Cancelada";
       statusElement.className = "status cancelada";
       appointmentCard.querySelector(".action-buttons").innerHTML = `
                 <button class="btn-visualizar" onclick="handleAppointmentAction('visualizar', ${appointmentIndex}, event)">Visualizar</button>
             `;
       break;
-    case "editar":
+    }
+    case "editar": {
       const appointment = appointments[appointmentIndex];
       appointmentCard.innerHTML = `
                 <div class="edit-form">
@@ -78,6 +79,9 @@ function handleAppointmentAction(action, appointmentIndex, event) {
                     <input type="number" id="edit-idade" value="${appointment.idade}" placeholder="Idade">
                     <select id="edit-especialidade">
                         <option value="${appointment.especialidade}">${appointment.especialidade}</option>
+      `;
+      break;
+    }
                         <option value="Cardiologia">Cardiologia</option>
                         <option value="Dermatologia">Dermatologia</option>
                         <option value="Pediatria">Pediatria</option>
