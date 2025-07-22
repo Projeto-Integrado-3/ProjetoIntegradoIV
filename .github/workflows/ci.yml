@@ -18,6 +18,12 @@ jobs:
         with:
           prettier_options: "--check . --ignore-path ./.gitignore"
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
       - name: Validate HTML
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
