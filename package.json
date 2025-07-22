@@ -2,9 +2,11 @@
   "name": "projetointegradoiv",
   "version": "1.0.0",
   "description": "Sistema de Agendamento de Consultas Médicas",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint scripts/**/*.js"
+    "lint": "eslint scripts/**/*.js",
+    "lint:fix": "eslint scripts/**/*.js --fix"
   },
   "author": "Projeto Integrado UFCA",
   "license": "MIT",
