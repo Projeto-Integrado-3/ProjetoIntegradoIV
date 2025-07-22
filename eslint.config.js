@@ -1,3 +1,5 @@
+import prettierConfig from "eslint-config-prettier";
+
 // ESLint v9+ config migrated from .eslintrc.json
 export default [
   {
@@ -21,4 +23,5 @@ export default [
       quotes: ["error", "double"],
     },
   },
+  prettierConfig,
 ];

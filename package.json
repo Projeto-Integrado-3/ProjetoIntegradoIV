@@ -13,6 +13,8 @@
   "author": "Projeto Integrado UFCA",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2"
   }
 }
