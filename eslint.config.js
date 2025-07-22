@@ -6,19 +6,19 @@ export default [
       ecmaVersion: 2021,
       sourceType: "module",
       globals: {
-        Swal: "readonly"
+        Swal: "readonly",
       },
       parserOptions: {
         ecmaVersion: 12,
-        sourceType: "module"
-      }
+        sourceType: "module",
+      },
     },
     // Ambiente já definido em languageOptions.globals
     rules: {
       "no-unused-vars": "warn",
       "no-console": "off",
-      "semi": ["error", "always"],
-      "quotes": ["error", "double"]
-    }
-  }
+      semi: ["error", "always"],
+      quotes: ["error", "double"],
+    },
+  },
 ];
