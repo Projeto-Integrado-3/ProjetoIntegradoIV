@@ -63,6 +63,7 @@ function handleAppointmentAction(action, appointmentIndex, event) {
       statusElement.className = "status confirmada";
       appointmentCard.querySelector(".btn-confirmar").style.display = "none";
       break;
+
     case "cancelar": {
       statusElement.textContent = "Status: Cancelada";
       statusElement.className = "status cancelada";
@@ -71,6 +72,7 @@ function handleAppointmentAction(action, appointmentIndex, event) {
             `;
       break;
     }
+
     case "editar": {
       const appointment = appointments[appointmentIndex];
       appointmentCard.innerHTML = `
@@ -79,17 +81,14 @@ function handleAppointmentAction(action, appointmentIndex, event) {
                     <input type="number" id="edit-idade" value="${appointment.idade}" placeholder="Idade">
                     <select id="edit-especialidade">
                         <option value="${appointment.especialidade}">${appointment.especialidade}</option>
-      `;
-      break;
-    }
                         <option value="Cardiologia">Cardiologia</option>
                         <option value="Dermatologia">Dermatologia</option>
                         <option value="Pediatria">Pediatria</option>
                         <option value="Psicologia">Psicologia</option>
                     </select>
                     <input type="text" id="edit-profissional" value="${appointment.profissional}" placeholder="Profissional">
-                    <input type="text" id="edit-data" value="${appointment.data}" placeholder="Data">
-                    <input type="text" id="edit-horario" value="${appointment.horario}" placeholder="Horário">
+                    <input type="text" id="edit-data" value="${appointment.data}" placeholder="Data (dd/mm/aaaa)">
+                    <input type="text" id="edit-horario" value="${appointment.horario}" placeholder="Horário (hh:mm)">
                     <div class="edit-buttons">
                         <button onclick="saveEdit(${appointmentIndex})">Salvar</button>
                         <button onclick="cancelEdit(${appointmentIndex})">Cancelar</button>
@@ -97,6 +96,7 @@ function handleAppointmentAction(action, appointmentIndex, event) {
                 </div>
             `;
       break;
+    }
   }
 
   localStorage.setItem("appointments", JSON.stringify(appointments));
@@ -118,7 +118,7 @@ function saveEdit(index) {
   window.location.reload();
 }
 
-function cancelEdit(index) {
+function cancelEdit() {
   window.location.reload();
 }
 
