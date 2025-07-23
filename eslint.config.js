@@ -32,10 +32,10 @@ export default [
     rules: {
       ...eslintConfigPrettier.rules,
       'prettier/prettier': 'error',
-      'no-unused-vars': 'off',
-      'no-console': 'off',
+      'no-unused-vars': 'warn',
+      'no-console': 'warn',
       'no-debugger': 'warn',
-      'no-alert': 'off',
+      'no-alert': 'warn',
     },
   },
   {
