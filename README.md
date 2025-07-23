@@ -4,7 +4,7 @@
 
 ## Descrição
 
-Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado III do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
+Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado IV do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
 
 ## Equipe do Projeto
 
@@ -14,14 +14,25 @@ Marcondes Alves Duarte - 2023010217
 
 Rayane Amaro dos Santos - 2023010280
 
+## Estrutura do Projeto
+
+O projeto está organizado da seguinte forma:
+
+- **`pages/`**: Contém todos os arquivos HTML da aplicação, como a página de login, cadastro, dashboard, etc.
+- **`styles/`**: Contém os arquivos CSS para estilização de cada página.
+- **`scripts/`**: Contém os arquivos JavaScript com a lógica da aplicação, incluindo manipulação do DOM, validações e interações com o LocalStorage.
+- **`assets/`**: Contém imagens e outros recursos visuais.
+- **`__tests__/`**: Contém os testes automatizados com Jest.
+
 ## EP1: Configuração da Integração Contínua (CI)
 
 **Objetivo do Processo de CI:**
 
-O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos duas tarefas automatizadas:
+O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos três tarefas automatizadas:
 
 1.  **Linting com Prettier:** Garante que todo o código (HTML, CSS, JavaScript) siga um padrão de formatação consistente.
-2.  **Validação de HTML:** Verifica se os arquivos HTML do dashboard (`dashboard.html`, `formAgendamento.html`, `historico.html`) possuem uma sintaxe válida.
+2.  **Testes com Jest:** Executa os testes automatizados para garantir que as funcionalidades principais da aplicação continuem funcionando como esperado.
+3.  **Validação de HTML:** Verifica se todos os arquivos HTML do projeto possuem uma sintaxe válida.
 
 **Configuração:**
 
@@ -58,40 +69,55 @@ Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, 
 
 - **Frontend:** HTML5, CSS3, JavaScript.
 - **Banco de dados:** LocalStorage (para persistência de dados no navegador).
+- **Testes:** Jest.
 - **Bibliotecas:** SweetAlert2 (para notificações e alertas).
 - **Qualidade e Automação:** Prettier, GitHub Actions.
 
 ## Instalação
 
-1. Clone o repositório:
+1.  Clone o repositório:
 
-   ```bash
-   git clone https://github.com/seu-usuario//ProjetoIntegradoIV.git
-   ```
+    ```bash
+    git clone https://github.com/seu-usuario//ProjetoIntegradoIV.git
+    ```
 
-2. Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
+2.  Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
 
-3. Configure o Live Server para visualizar o projeto localmente:
-   - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
-   - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+3.  Instale as dependências do projeto:
+
+    ```bash
+    npm install
+    ```
+
+4.  Configure o Live Server para visualizar o projeto localmente:
+    - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
+    - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
 
 ## Uso
 
-1. Acesse a interface do sistema através do navegador.
-2. Cadastre-se como usuário.
-3. Realize login com email e senha cadastrada para acessar o painel de controle.
-4. Agende, visualize ou cancele consultas conforme necessário.
-5. Utilize as funcionalidades de cadastro e edição de pacientes e profissionais de saúde.
+1.  Acesse a interface do sistema através do navegador.
+2.  Cadastre-se como usuário.
+3.  Realize login com email e senha cadastrada para acessar o painel de controle.
+4.  Agende, visualize ou cancele consultas conforme necessário.
+5.  Utilize as funcionalidades de cadastro e edição de pacientes e profissionais de saúde.
+
+## Testes
+
+Para executar os testes localmente, utilize o comando:
+
+```bash
+npm test
+```
 
 ## Contribuição
 
 Contribuições são bem-vindas! Siga estas diretrizes:
 
-1. Faça um fork do repositório.
-2. Crie uma branch para sua funcionalidade: `git checkout -b minha-funcionalidade`.
-3. Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`.
-4. Faça push para a branch: `git push origin minha-funcionalidade`.
-5. Crie um pull request.
+1.  Faça um fork do repositório.
+2.  Crie uma branch para sua funcionalidade: `git checkout -b minha-funcionalidade`.
+3.  Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`.
+4.  Faça push para a branch: `git push origin minha-funcionalidade`.
+5.  Crie um pull request.
 
 ## Licença
 
