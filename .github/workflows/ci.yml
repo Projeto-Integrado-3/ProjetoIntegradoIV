@@ -16,7 +16,7 @@ jobs:
       - name: Run Prettier
         uses: creyD/prettier_action@v4.3
         with:
-          prettier_options: "--check . --ignore-path ./.gitignore"
+          prettier_options: '--check . --ignore-path ./.gitignore'
 
       - name: Validate HTML
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
