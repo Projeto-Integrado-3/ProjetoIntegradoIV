@@ -1,129 +1,180 @@
-let labelNome = document.querySelector("#labelNome");
-let nome = document.querySelector("#nome");
-let validNome = false;
+'use strict';
 
-let labelCPF = document.querySelector("#labelCPF");
-let cpf = document.querySelector("#cpf");
-let validCPF = false;
+// Form elements
+const elements = {
+  nome: document.querySelector('#nome'),
+  cpf: document.querySelector('#cpf'),
+  crm: document.querySelector('#crm'),
+  email: document.querySelector('#email'),
+  telefone: document.querySelector('#telefone'),
+  endereco: document.querySelector('#endereco'),
+  especialidade: document.querySelector('#especialidade'),
+  labelNome: document.querySelector('#labelNome'),
+  labelCPF: document.querySelector('#labelCPF'),
+  labelCRM: document.querySelector('#labelCRM'),
+  labelEmail: document.querySelector('#labelEmail'),
+  labelTelefone: document.querySelector('#labelTelefone'),
+  labelEndereco: document.querySelector('#labelEndereco'),
+  labelEspecialidade: document.querySelector('#labelEspecialidade'),
+};
 
-let labelCRM = document.querySelector("#labelCRM");
-let crm = document.querySelector("#crm");
-let validCRM = false;
+// Validation states
+const validation = {
+  validNome: false,
+  validCPF: false,
+  validCRM: false,
+  validEmail: false,
+  validTelefone: false,
+  validEndereco: false,
+  validEspecialidade: false,
+};
 
-let labelEmail = document.querySelector("#labelEmail");
-let email = document.querySelector("#email");
-let validEmail = false;
-
-let labelTelefone = document.querySelector("#labelTelefone");
-let telefone = document.querySelector("#telefone");
-let validTelefone = false;
-
-let labelEndereco = document.querySelector("#labelEndereco");
-let endereco = document.querySelector("#endereco");
-let validEndereco = false;
-
-let labelEspecialidade = document.querySelector("#labelEspecialidade");
-let especialidade = document.querySelector("#especialidade");
-let validEspecialidade = false;
-
+// Utility functions
 function validateEmail(email) {
   return /\S+@\S+\.\S+/.test(email);
 }
 
-nome.addEventListener("keyup", () => {
-  if (nome.value == "") {
-    labelNome.setAttribute("style", "color: red");
-    labelNome.innerHTML = `Nome precisa ser preenchido`;
-    nome.setAttribute("style", "border-color: red");
-    validNome = false;
-  } else {
-    labelNome.setAttribute("style", "color:green");
-    labelNome.innerHTML = "Nome";
-    nome.setAttribute("style", "border-color: green");
-    validNome = true;
-  }
+function setFieldValidation(
+  field,
+  label,
+  isValid,
+  errorMessage,
+  successMessage
+) {
+  if (!field || !label) return;
+
+  const color = isValid ? 'green' : 'red';
+  const borderColor = isValid ? 'green' : 'red';
+
+  label.setAttribute('style', `color: ${color}`);
+  label.innerHTML = isValid ? successMessage : errorMessage;
+  field.setAttribute('style', `border-color: ${borderColor}`);
+}
+
+// Validation functions
+function validateNome() {
+  const isValid = elements.nome.value.trim() !== '';
+  validation.validNome = isValid;
+
+  setFieldValidation(
+    elements.nome,
+    elements.labelNome,
+    isValid,
+    'Nome precisa ser preenchido',
+    'Nome'
+  );
+}
+
+function validateCPF() {
+  const cpfValue = elements.cpf.value.replace(/\D/g, ''); // Remove non-digits
+  const isValid = cpfValue.length === 11;
+  validation.validCPF = isValid;
+
+  setFieldValidation(
+    elements.cpf,
+    elements.labelCPF,
+    isValid,
+    'CPF precisa ter 11 dígitos',
+    'CPF'
+  );
+}
+
+function validateCRM() {
+  const isValid = elements.crm.value.trim() !== '';
+  validation.validCRM = isValid;
+
+  setFieldValidation(
+    elements.crm,
+    elements.labelCRM,
+    isValid,
+    'CRM deve ser preenchido',
+    'CRM'
+  );
+}
+
+function validateEmailField() {
+  const isValid = validateEmail(elements.email.value);
+  validation.validEmail = isValid;
+
+  setFieldValidation(
+    elements.email,
+    elements.labelEmail,
+    isValid,
+    'Email inválido',
+    'Email'
+  );
+}
+
+function validateTelefone() {
+  const telefoneValue = elements.telefone.value.replace(/\D/g, ''); // Remove non-digits
+  const isValid = telefoneValue.length >= 10;
+  validation.validTelefone = isValid;
+
+  setFieldValidation(
+    elements.telefone,
+    elements.labelTelefone,
+    isValid,
+    'Telefone precisa ter pelo menos 10 dígitos',
+    'Telefone'
+  );
+}
+
+function validateEndereco() {
+  const isValid = elements.endereco.value.trim() !== '';
+  validation.validEndereco = isValid;
+
+  setFieldValidation(
+    elements.endereco,
+    elements.labelEndereco,
+    isValid,
+    'Endereço precisa ser preenchido',
+    'Endereço'
+  );
+}
+
+function validateEspecialidade() {
+  const isValid = elements.especialidade.value.trim() !== '';
+  validation.validEspecialidade = isValid;
+
+  setFieldValidation(
+    elements.especialidade,
+    elements.labelEspecialidade,
+    isValid,
+    'Especialidade precisa ser preenchida',
+    'Especialidade'
+  );
+}
+
+// Event listeners
+function setupEventListeners() {
+  const validators = [
+    { element: elements.nome, validator: validateNome },
+    { element: elements.cpf, validator: validateCPF },
+    { element: elements.crm, validator: validateCRM },
+    { element: elements.email, validator: validateEmailField },
+    { element: elements.telefone, validator: validateTelefone },
+    { element: elements.endereco, validator: validateEndereco },
+    { element: elements.especialidade, validator: validateEspecialidade },
+  ];
+
+  validators.forEach(({ element, validator }) => {
+    if (element) {
+      element.addEventListener('keyup', validator);
+      element.addEventListener('blur', validator);
+    }
+  });
+}
+
+// Public function to check if all fields are valid
+function isFormValid() {
+  return Object.values(validation).every((isValid) => isValid);
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  setupEventListeners();
 });
 
-cpf.addEventListener("keyup", () => {
-  if (cpf.value.length !== 11) {
-    labelCPF.setAttribute("style", "color: red");
-    labelCPF.innerHTML = `CPF precisa ter 11 dígitos`;
-    cpf.setAttribute("style", "border-color: red");
-    validCPF = false;
-  } else {
-    labelCPF.setAttribute("style", "color: green");
-    labelCPF.innerHTML = "CPF";
-    cpf.setAttribute("style", "border-color: green");
-    validCPF = true;
-  }
-});
-
-crm.addEventListener("keyup", () => {
-  if (crm.value == "") {
-    labelCRM.setAttribute("style", "color: red");
-    labelCRM.innerHTML = `CRM deve ser prenchido`;
-    crm.setAttribute("style", "border-color: red");
-    validCRM = false;
-  } else {
-    labelCRM.setAttribute("style", "color: green");
-    labelCRM.innerHTML = "CRM";
-    crm.setAttribute("style", "border-color: green");
-    validCRM = true;
-  }
-});
-
-email.addEventListener("keyup", () => {
-  if (!validateEmail(email.value)) {
-    labelEmail.setAttribute("style", "color: red");
-    labelEmail.innerHTML = `Email inválido`;
-    email.setAttribute("style", "border-color: red");
-    validEmail = false;
-  } else {
-    labelEmail.setAttribute("style", "color: green");
-    labelEmail.innerHTML = "Email";
-    email.setAttribute("style", "border-color: green");
-    validEmail = true;
-  }
-});
-
-telefone.addEventListener("keyup", () => {
-  if (telefone.value.length < 10) {
-    labelTelefone.setAttribute("style", "color: red");
-    labelTelefone.innerHTML = `Telefone precisa ter pelo menos 10 dígitos`;
-    telefone.setAttribute("style", "border-color: red");
-    validTelefone = false;
-  } else {
-    labelTelefone.setAttribute("style", "color: green");
-    labelTelefone.innerHTML = "Telefone";
-    telefone.setAttribute("style", "border-color: green");
-    validTelefone = true;
-  }
-});
-
-endereco.addEventListener("keyup", () => {
-  if (endereco.value === "") {
-    labelEndereco.setAttribute("style", "color: red");
-    labelEndereco.innerHTML = `Endereço precisa ser preenchido`;
-    endereco.setAttribute("style", "border-color: red");
-    validEndereco = false;
-  } else {
-    labelEndereco.setAttribute("style", "color: green");
-    labelEndereco.innerHTML = "Endereço";
-    endereco.setAttribute("style", "border-color: green");
-    validEndereco = true;
-  }
-});
-
-especialidade.addEventListener("keyup", () => {
-  if (especialidade.value.trim() === "") {
-    labelEspecialidade.setAttribute("style", "color: red");
-    labelEspecialidade.innerHTML = `Especialidade precisa ser preenchida`;
-    especialidade.setAttribute("style", "border-color: red");
-    validEspecialidade = false;
-  } else {
-    labelEspecialidade.setAttribute("style", "color: green");
-    labelEspecialidade.innerHTML = "Especialidade";
-    especialidade.setAttribute("style", "border-color: green");
-    validEspecialidade = true;
-  }
-});
+// Make validation function globally available
+window.isFormValid = isFormValid;
+window.validation = validation;

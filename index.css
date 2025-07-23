@@ -33,7 +33,7 @@ main {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   margin: 40px auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .welcome h1 {
@@ -120,10 +120,7 @@ main {
     padding: 15px 30px;
     font-size: 1.1em;
   }
-}
 
-/* Media Queries para Responsividade */
-@media (max-width: 768px) {
   .content {
     flex-direction: column;
     align-items: center;
