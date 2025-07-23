@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "workspace",
   "version": "1.0.0",
   "description": "![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)",
@@ -10,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "prettier": "^3.6.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.3",
-    "prettier": "^3.6.2"
+    "eslint-plugin-prettier": "^5.5.3"
   }
 }
