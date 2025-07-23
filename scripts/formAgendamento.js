@@ -1,93 +1,103 @@
 function initFormAgendamento() {
   document.addEventListener("DOMContentLoaded", function () {
-  const pacienteInput = document.getElementById("paciente");
-  const especialidadeSelect = document.getElementById("especialidade");
-  const profissionalSelect = document.getElementById("profissional");
-  const horarioSelect = document.getElementById("horario");
-  const dataBtns = document.querySelectorAll(".data-btn");
-  const confirmacaoInfo = document.querySelector(".confirmacao-info");
+    const pacienteInput = document.getElementById("paciente");
+    const especialidadeSelect = document.getElementById("especialidade");
+    const profissionalSelect = document.getElementById("profissional");
+    const horarioSelect = document.getElementById("horario");
+    const dataBtns = document.querySelectorAll(".data-btn");
+    const confirmacaoInfo = document.querySelector(".confirmacao-info");
 
-  let selectedDate = null;
+    let selectedDate = null;
 
-  dataBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      dataBtns.forEach((b) => b.classList.remove("selected"));
-      this.classList.add("selected");
-      const year = new Date().getFullYear();
-      selectedDate = `${this.textContent}/${year}`;
-      updateConfirmation();
+    dataBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        dataBtns.forEach((b) => b.classList.remove("selected"));
+        this.classList.add("selected");
+        const year = new Date().getFullYear();
+        selectedDate = `${this.textContent}/${year}`;
+        updateConfirmation();
+      });
     });
-  });
 
-  [especialidadeSelect, profissionalSelect, horarioSelect].forEach((select) => {
-    select.addEventListener("change", updateConfirmation);
-  });
+    [especialidadeSelect, profissionalSelect, horarioSelect].forEach(
+      (select) => {
+        select.addEventListener("change", updateConfirmation);
+      },
+    );
 
-  function updateConfirmation() {
-    const paciente = pacienteInput.value;
-    const especialidade = especialidadeSelect.value;
-    const profissional =
-      profissionalSelect.options[profissionalSelect.selectedIndex].text.trim();
-    const horario = formatTime(horarioSelect.value);
+    function updateConfirmation() {
+      const paciente = pacienteInput.value;
+      const especialidade = especialidadeSelect.value;
+      const profissional =
+        profissionalSelect.options[
+          profissionalSelect.selectedIndex
+        ].text.trim();
+      const horario = formatTime(horarioSelect.value);
 
-    if (paciente && especialidade && profissional && selectedDate && horario) {
-      confirmacaoInfo.innerHTML = `
+      if (
+        paciente &&
+        especialidade &&
+        profissional &&
+        selectedDate &&
+        horario
+      ) {
+        confirmacaoInfo.innerHTML = `
                 <p>Paciente: ${paciente}</p>
                 <p>Especialidade: ${especialidade}</p>
                 <p>Profissional: ${profissional}</p>
                 <p>Data: ${selectedDate}</p>
                 <p>Horário: ${horario}</p>
             `;
-    }
-  }
-
-  document
-    .querySelector(".confirmar-btn")
-    .addEventListener("click", function () {
-      if (
-        !especialidadeSelect.value ||
-        !profissionalSelect.value ||
-        !selectedDate ||
-        !horarioSelect.value
-      ) {
-        Swal.fire({
-          icon: "error",
-          title: "Erro!",
-          text: "Por favor, preencha todos os campos.",
-        });
-        return;
       }
+    }
 
-      const appointmentData = {
-        paciente: pacienteInput.value,
-        idade: document.getElementById("idade").value,
-        especialidade: especialidadeSelect.value,
-        profissional:
-          profissionalSelect.options[profissionalSelect.selectedIndex].text,
-        data: selectedDate,
-        horario: formatTime(horarioSelect.value),
-      };
+    document
+      .querySelector(".confirmar-btn")
+      .addEventListener("click", function () {
+        if (
+          !especialidadeSelect.value ||
+          !profissionalSelect.value ||
+          !selectedDate ||
+          !horarioSelect.value
+        ) {
+          Swal.fire({
+            icon: "error",
+            title: "Erro!",
+            text: "Por favor, preencha todos os campos.",
+          });
+          return;
+        }
 
-      const appointments =
-        JSON.parse(localStorage.getItem("appointments")) ?? [];
+        const appointmentData = {
+          paciente: pacienteInput.value,
+          idade: document.getElementById("idade").value,
+          especialidade: especialidadeSelect.value,
+          profissional:
+            profissionalSelect.options[profissionalSelect.selectedIndex].text,
+          data: selectedDate,
+          horario: formatTime(horarioSelect.value),
+        };
 
-      appointments.push(appointmentData);
+        const appointments =
+          JSON.parse(localStorage.getItem("appointments")) ?? [];
 
-      localStorage.setItem("appointments", JSON.stringify(appointments));
+        appointments.push(appointmentData);
 
-      Swal.fire({
-        icon: "success",
-        title: "Agendamento Confirmado!",
-        text: "O agendamento foi salvo com sucesso.",
-        timer: 2000,
-        showConfirmButton: false,
-      }).then(() => {
-        window.location.href = "/pages/agenda.html";
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+
+        Swal.fire({
+          icon: "success",
+          title: "Agendamento Confirmado!",
+          text: "O agendamento foi salvo com sucesso.",
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(() => {
+          window.location.href = "/pages/agenda.html";
+        });
       });
-    });
-});
+  });
 }
 
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   module.exports = { initFormAgendamento };
 }
