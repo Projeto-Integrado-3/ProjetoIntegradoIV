@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+function initFormAgendamento() {
+  document.addEventListener("DOMContentLoaded", function () {
   const pacienteInput = document.getElementById("paciente");
   const especialidadeSelect = document.getElementById("especialidade");
   const profissionalSelect = document.getElementById("profissional");
@@ -21,10 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   [especialidadeSelect, profissionalSelect, horarioSelect].forEach((select) => {
     select.addEventListener("change", updateConfirmation);
   });
-
-  function formatTime(time) {
-    return time.replace(/(\d{2})(\d{2})/, "$1:$2");
-  }
 
   function updateConfirmation() {
     const paciente = pacienteInput.value;
@@ -89,3 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 });
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { initFormAgendamento };
+}

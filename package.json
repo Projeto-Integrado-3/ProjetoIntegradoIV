@@ -1,0 +1,27 @@
+{
+  "name": "projetointegradoiv",
+  "version": "1.0.0",
+  "description": "## Descrição",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/issues"
+  },
+  "homepage": "https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV#readme",
+  "devDependencies": {
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4"
+  }
+}

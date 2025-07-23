@@ -4,7 +4,7 @@
 
 ## Descrição
 
-Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado III do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
+Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado IV do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
 
 ## Equipe do Projeto
 
@@ -14,14 +14,25 @@ Marcondes Alves Duarte - 2023010217
 
 Rayane Amaro dos Santos - 2023010280
 
+## Estrutura do Projeto
+
+O projeto está organizado da seguinte forma:
+
+-   **`pages/`**: Contém todos os arquivos HTML da aplicação, como a página de login, cadastro, dashboard, etc.
+-   **`styles/`**: Contém os arquivos CSS para estilização de cada página.
+-   **`scripts/`**: Contém os arquivos JavaScript com a lógica da aplicação, incluindo manipulação do DOM, validações e interações com o LocalStorage.
+-   **`assets/`**: Contém imagens e outros recursos visuais.
+-   **`__tests__/`**: Contém os testes automatizados com Jest.
+
 ## EP1: Configuração da Integração Contínua (CI)
 
 **Objetivo do Processo de CI:**
 
-O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos duas tarefas automatizadas:
+O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos três tarefas automatizadas:
 
 1.  **Linting com Prettier:** Garante que todo o código (HTML, CSS, JavaScript) siga um padrão de formatação consistente.
-2.  **Validação de HTML:** Verifica se os arquivos HTML do dashboard (`dashboard.html`, `formAgendamento.html`, `historico.html`) possuem uma sintaxe válida.
+2.  **Testes com Jest:** Executa os testes automatizados para garantir que as funcionalidades principais da aplicação continuem funcionando como esperado.
+3.  **Validação de HTML:** Verifica se todos os arquivos HTML do projeto possuem uma sintaxe válida.
 
 **Configuração:**
 
@@ -35,63 +46,78 @@ Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/
 
 Para estudantes e novos programadores, adotar a CI desde cedo traz vários benefícios:
 
-- **Feedback Rápido:** Você descobre erros e problemas de compatibilidade quase que imediatamente, em vez de semanas depois. Isso torna a correção mais fácil e rápida.
-- **Aprender Boas Práticas:** Ajuda a criar o hábito de escrever código mais limpo, testado e bem formatado, que são habilidades essenciais no mercado de trabalho.
-- **Confiança para Mudar:** Com testes automatizados, você pode fazer alterações e refatorar seu código com mais segurança, sabendo que o sistema de CI vai alertar se algo quebrar.
-- **Colaboração Melhorada:** Em projetos de equipe, a CI garante que o código de todos os membros funcione bem junto, evitando o famoso "na minha máquina funciona".
+-   **Feedback Rápido:** Você descobre erros e problemas de compatibilidade quase que imediatamente, em vez de semanas depois. Isso torna a correção mais fácil e rápida.
+-   **Aprender Boas Práticas:** Ajuda a criar o hábito de escrever código mais limpo, testado e bem formatado, que são habilidades essenciais no mercado de trabalho.
+-   **Confiança para Mudar:** Com testes automatizados, você pode fazer alterações e refatorar seu código com mais segurança, sabendo que o sistema de CI vai alertar se algo quebrar.
+-   **Colaboração Melhorada:** Em projetos de equipe, a CI garante que o código de todos os membros funcione bem junto, evitando o famoso "na minha máquina funciona".
 
 Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, permitindo que você se concentre em aprender, criar novas funcionalidades e se tornar um desenvolvedor melhor.
 
 ## Funcionalidades Principais
 
-- Agendamento de consultas online.
-- Visualização da disponibilidade de médicos.
-- Confirmação e cancelamento de consultas.
-- Cadastro de pacientes e profissionais de saúde.
-- Interface intuitiva e fácil de usar.
-- Controle de login e logout com autenticação.
-- Histórico de consultas e agendamentos.
-- Modal para cadastro e edição de informações.
-- Responsividade para dispositivos móveis.
+-   Agendamento de consultas online.
+-   Visualização da disponibilidade de médicos.
+-   Confirmação e cancelamento de consultas.
+-   Cadastro de pacientes e profissionais de saúde.
+-   Interface intuitiva e fácil de usar.
+-   Controle de login e logout com autenticação.
+-   Histórico de consultas e agendamentos.
+-   Modal para cadastro e edição de informações.
+-   Responsividade para dispositivos móveis.
 
 ## Tecnologias Utilizadas
 
-- **Frontend:** HTML5, CSS3, JavaScript.
-- **Banco de dados:** LocalStorage (para persistência de dados no navegador).
-- **Bibliotecas:** SweetAlert2 (para notificações e alertas).
-- **Qualidade e Automação:** Prettier, GitHub Actions.
+-   **Frontend:** HTML5, CSS3, JavaScript.
+-   **Banco de dados:** LocalStorage (para persistência de dados no navegador).
+-   **Testes:** Jest.
+-   **Bibliotecas:** SweetAlert2 (para notificações e alertas).
+-   **Qualidade e Automação:** Prettier, GitHub Actions.
 
 ## Instalação
 
-1. Clone o repositório:
+1.  Clone o repositório:
 
-   ```bash
-   git clone https://github.com/seu-usuario//ProjetoIntegradoIV.git
-   ```
+    ```bash
+    git clone https://github.com/seu-usuario//ProjetoIntegradoIV.git
+    ```
 
-2. Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
+2.  Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
 
-3. Configure o Live Server para visualizar o projeto localmente:
-   - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
-   - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+3.  Instale as dependências do projeto:
+
+    ```bash
+    npm install
+    ```
+
+4.  Configure o Live Server para visualizar o projeto localmente:
+    -   Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
+    -   Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
 
 ## Uso
 
-1. Acesse a interface do sistema através do navegador.
-2. Cadastre-se como usuário.
-3. Realize login com email e senha cadastrada para acessar o painel de controle.
-4. Agende, visualize ou cancele consultas conforme necessário.
-5. Utilize as funcionalidades de cadastro e edição de pacientes e profissionais de saúde.
+1.  Acesse a interface do sistema através do navegador.
+2.  Cadastre-se como usuário.
+3.  Realize login com email e senha cadastrada para acessar o painel de controle.
+4.  Agende, visualize ou cancele consultas conforme necessário.
+5.  Utilize as funcionalidades de cadastro e edição de pacientes e profissionais de saúde.
+
+## Testes
+
+Para executar os testes localmente, utilize o comando:
+
+```bash
+npm test
+```
 
 ## Contribuição
 
 Contribuições são bem-vindas! Siga estas diretrizes:
 
-1. Faça um fork do repositório.
-2. Crie uma branch para sua funcionalidade: `git checkout -b minha-funcionalidade`.
-3. Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`.
-4. Faça push para a branch: `git push origin minha-funcionalidade`.
-5. Crie um pull request.
+1.  Faça um fork do repositório.
+2.  Crie uma branch para sua funcionalidade: `git checkout -b minha-funcionalidade`.
+3.  Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`.
+4.  Faça push para a branch: `git push origin minha-funcionalidade`.
+5.  Crie um pull request.
 
 ## Licença
 
@@ -99,63 +125,63 @@ Este projeto está sob a licença MIT. Consulte o arquivo MIT License para mais 
 
 ## Contato
 
-- Equipe do projeto - [equipe12ads@gmail.com]
+-   Equipe do projeto - [equipe12ads@gmail.com]
 
 ## Informações Adicionais
 
-- Este projeto foi desenvolvido como parte de um trabalho acadêmico.
-- Para mais informações, consulte a documentação do código ou entre em contato.
+-   Este projeto foi desenvolvido como parte de um trabalho acadêmico.
+-   Para mais informações, consulte a documentação do código ou entre em contato.
 
 ## Telas do projeto
 
-- Pagina Inicial
+-   Pagina Inicial
 
 ![Captura de tela de 2025-05-01 17-31-19](https://github.com/user-attachments/assets/f0aaff72-8f2e-4c24-a17c-5fc4c25d027d)
 
-- Tela de Login
+-   Tela de Login
 
 ![Captura de tela de 2025-05-01 17-31-27](https://github.com/user-attachments/assets/316a2047-1ce5-41a5-b234-229e502a1aaf)
 
-- Tela de Cadastro de Usuário
+-   Tela de Cadastro de Usuário
 
 ![Captura de tela de 2025-05-01 17-31-32](https://github.com/user-attachments/assets/17b535f3-4d6d-44e0-af39-bddd6f41975c)
 
-- Tela Home
+-   Tela Home
 
 ![Captura de tela de 2025-05-01 17-32-33](https://github.com/user-attachments/assets/1fc040de-652f-4561-bc6d-4283ff7c68dc)
 
-- Tela de Consultas Médica
+-   Tela de Consultas Médica
 
 ![Captura de tela de 2025-05-01 17-32-42](https://github.com/user-attachments/assets/08cb0758-fb31-436e-b569-debf452edee2)
 
-- Tela de agendamentos
+-   Tela de agendamentos
 
 ![Captura de tela de 2025-05-01 17-59-16](https://github.com/user-attachments/assets/2169d31a-7588-4f6d-9bbf-54f568ab0f33)
 
-- Tela do formulário onde agenda uma consulta
+-   Tela do formulário onde agenda uma consulta
 
 ![Captura de tela de 2025-05-01 17-32-54](https://github.com/user-attachments/assets/10cfb9d2-b408-46e7-8e98-7cb513dbc19f)
 
-- Tela de Histórico de Consultas
+-   Tela de Histórico de Consultas
 
 ![Captura de tela de 2025-05-01 17-58-30](https://github.com/user-attachments/assets/e15db59b-bc3f-40d6-b8b0-bcdc927b4c5f)
 
-- Tela de Cadastramento de Paciente
+-   Tela de Cadastramento de Paciente
 
 ![Captura de tela de 2025-05-01 17-33-00](https://github.com/user-attachments/assets/f570022e-985b-48ad-acc2-08d3fadf52a1)
 
-- Formulário de Cadastramento de Paciente
+-   Formulário de Cadastramento de Paciente
 
 ![Captura de tela de 2025-05-01 17-55-13](https://github.com/user-attachments/assets/3978877b-d2d5-4f7d-bbe8-1980067e24a7)
 
-- Tela de Cadastramento de Profissional
+-   Tela de Cadastramento de Profissional
 
 ![Captura de tela de 2025-05-01 17-33-03](https://github.com/user-attachments/assets/0495598e-b16d-490d-9202-e6d60be0caab)
 
-- Formulário de Cadastramento de Profissional
+-   Formulário de Cadastramento de Profissional
 
 ![Captura de tela de 2025-05-01 17-55-33](https://github.com/user-attachments/assets/357cdeee-6604-4ed2-9b3e-c083cc0ae373)
 
-- Tela de Gerenciamento de Exames
+-   Tela de Gerenciamento de Exames
 
 ![Captura de tela de 2025-05-01 17-33-06](https://github.com/user-attachments/assets/11628846-d319-41aa-8181-08e9ecfbb3e8)
