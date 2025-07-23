@@ -42,6 +42,24 @@ Para estudantes e novos programadores, adotar a CI desde cedo traz vários benef
 
 Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, permitindo que você se concentre em aprender, criar novas funcionalidades e se tornar um desenvolvedor melhor.
 
+## Qualidade de Código
+
+ESLint + Prettier
+O projeto utiliza ESLint integrado com Prettier para garantir a qualidade e consistência do código JavaScript:
+
+**Configuração:**
+
+ESLint v9 com configuração moderna (eslint.config.js)
+Integração completa com Prettier para evitar conflitos de regras
+Suporte a ES2021+ e ambiente browser/node
+Variáveis globais configuradas (incluindo SweetAlert2)
+Benefícios:
+
+Detecção automática de erros de sintaxe e lógica
+Formatação consistente do código (aspas simples, ponto e vírgula, indentação)
+Boas práticas de JavaScript aplicadas automaticamente
+Feedback imediato durante o desenvolvimento
+
 ## Funcionalidades Principais
 
 - Agendamento de consultas online.
@@ -59,7 +77,8 @@ Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, 
 - **Frontend:** HTML5, CSS3, JavaScript.
 - **Banco de dados:** LocalStorage (para persistência de dados no navegador).
 - **Bibliotecas:** SweetAlert2 (para notificações e alertas).
-- **Qualidade e Automação:** Prettier, GitHub Actions.
+- |**Qualidade e Automação:** ESLint, Prettier, GitHub Actions.
+- **Gerenciamento de Dependências:** Node.js com npm.
 
 ## Instalação
 
