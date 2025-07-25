@@ -1,6 +1,9 @@
 # Sistema de Agendamento De Consultas Médicas
 
 ![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)
+![Node.js](https://img.shields.io/badge/node.js-20.x-green)
+![ESLint](https://img.shields.io/badge/ESLint-passing-brightgreen)
+![Jest](https://img.shields.io/badge/Tests-Jest-red)
 
 ## Descrição
 

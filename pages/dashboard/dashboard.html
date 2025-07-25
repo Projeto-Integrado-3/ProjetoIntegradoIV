@@ -44,7 +44,7 @@
         </li>
         <li><a href="/pages/exames.html">Exames</a></li>
         <li>
-          <button type="button" id="logout-button" onclick="sair()">
+          <button type="button" id="logout-button">
             Sair
           </button>
         </li>
@@ -62,15 +62,10 @@
             <button>Ver Detalhes</button>
           </div>
           <div class="button-container">
-            <button
-              onclick="window.location.href='/pages/dashboard/formAgendamento.html'"
-            >
+            <button id="btnAgendar">
               Agendar Consultas
             </button>
-            <button
-              class="green-button"
-              onclick="window.location.href='/pages/dashboard/historico.html'"
-            >
+            <button class="green-button" id="btnHistorico">
               Ver Histórico
             </button>
           </div>
@@ -92,5 +87,23 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/scripts/logout.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const btnAgendar = document.getElementById('btnAgendar');
+        const btnHistorico = document.getElementById('btnHistorico');
+        
+        if (btnAgendar) {
+          btnAgendar.addEventListener('click', function() {
+            window.location.href = '/pages/dashboard/formAgendamento.html';
+          });
+        }
+        
+        if (btnHistorico) {
+          btnHistorico.addEventListener('click', function() {
+            window.location.href = '/pages/dashboard/historico.html';
+          });
+        }
+      });
+    </script>
   </body>
 </html>
