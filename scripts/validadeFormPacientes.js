@@ -1,156 +1,93 @@
-'use strict';
+let labelNome = document.querySelector("#labelNome");
+let nome = document.querySelector("#nome");
+let validNome = false;
 
-// Form elements
-const elements = {
-  nome: document.querySelector('#nome'),
-  cpf: document.querySelector('#cpf'),
-  email: document.querySelector('#email'),
-  telefone: document.querySelector('#telefone'),
-  endereco: document.querySelector('#endereco'),
-  labelNome: document.querySelector('#labelNome'),
-  labelCPF: document.querySelector('#labelCPF'),
-  labelEmail: document.querySelector('#labelEmail'),
-  labelTelefone: document.querySelector('#labelTelefone'),
-  labelEndereco: document.querySelector('#labelEndereco'),
-};
+let labelCPF = document.querySelector("#labelCPF");
+let cpf = document.querySelector("#cpf");
+let validCPF = false;
 
-// Validation states
-const validation = {
-  validNome: false,
-  validCPF: false,
-  validEmail: false,
-  validTelefone: false,
-  validEndereco: false,
-};
+let labelEmail = document.querySelector("#labelEmail");
+let email = document.querySelector("#email");
+let validEmail = false;
 
-// Utility functions
+let labelTelefone = document.querySelector("#labelTelefone");
+let telefone = document.querySelector("#telefone");
+let validTelefone = false;
+
+let labelEndereco = document.querySelector("#labelEndereco");
+let endereco = document.querySelector("#endereco");
+let validEndereco = false;
+
 function validateEmail(email) {
   return /\S+@\S+\.\S+/.test(email);
 }
 
-function setFieldValidation(
-  field,
-  label,
-  isValid,
-  errorMessage,
-  successMessage
-) {
-  if (!field || !label) return;
-
-  const color = isValid ? 'green' : 'red';
-  const borderColor = isValid ? 'green' : 'red';
-
-  label.setAttribute('style', `color: ${color}`);
-  label.innerHTML = isValid ? successMessage : errorMessage;
-  field.setAttribute('style', `border-color: ${borderColor}`);
-}
-
-// Validation functions
-function validateNome() {
-  const isValid = elements.nome.value.trim() !== '';
-  validation.validNome = isValid;
-
-  setFieldValidation(
-    elements.nome,
-    elements.labelNome,
-    isValid,
-    'Nome precisa ser preenchido',
-    'Nome'
-  );
-}
-
-function validateCPF() {
-  const cpfValue = elements.cpf.value.replace(/\D/g, ''); // Remove non-digits
-  const isValid = cpfValue.length === 11;
-  validation.validCPF = isValid;
-
-  setFieldValidation(
-    elements.cpf,
-    elements.labelCPF,
-    isValid,
-    'CPF precisa ter 11 dígitos',
-    'CPF'
-  );
-}
-
-function validateEmailField() {
-  const isValid = validateEmail(elements.email.value);
-  validation.validEmail = isValid;
-
-  setFieldValidation(
-    elements.email,
-    elements.labelEmail,
-    isValid,
-    'Email inválido',
-    'Email'
-  );
-}
-
-function validateTelefone() {
-  const telefoneValue = elements.telefone.value.replace(/\D/g, ''); // Remove non-digits
-  const isValid = telefoneValue.length >= 10;
-  validation.validTelefone = isValid;
-
-  setFieldValidation(
-    elements.telefone,
-    elements.labelTelefone,
-    isValid,
-    'Telefone precisa ter pelo menos 10 dígitos',
-    'Telefone'
-  );
-}
-
-function validateEndereco() {
-  const isValid = elements.endereco.value.trim() !== '';
-  validation.validEndereco = isValid;
-
-  setFieldValidation(
-    elements.endereco,
-    elements.labelEndereco,
-    isValid,
-    'Endereço precisa ser preenchido',
-    'Endereço'
-  );
-}
-
-// Event listeners
-function setupEventListeners() {
-  if (elements.nome) {
-    elements.nome.addEventListener('keyup', validateNome);
-    elements.nome.addEventListener('blur', validateNome);
+nome.addEventListener("keyup", () => {
+  if (nome.value == "") {
+    labelNome.setAttribute("style", "color: red");
+    labelNome.innerHTML = `Nome precisa ser preenchido`;
+    nome.setAttribute("style", "border-color: red");
+    validNome = false;
+  } else {
+    labelNome.setAttribute("style", "color:green");
+    labelNome.innerHTML = "Nome";
+    nome.setAttribute("style", "border-color: green");
+    validNome = true;
   }
-
-  if (elements.cpf) {
-    elements.cpf.addEventListener('keyup', validateCPF);
-    elements.cpf.addEventListener('blur', validateCPF);
-  }
-
-  if (elements.email) {
-    elements.email.addEventListener('keyup', validateEmailField);
-    elements.email.addEventListener('blur', validateEmailField);
-  }
-
-  if (elements.telefone) {
-    elements.telefone.addEventListener('keyup', validateTelefone);
-    elements.telefone.addEventListener('blur', validateTelefone);
-  }
-
-  if (elements.endereco) {
-    elements.endereco.addEventListener('keyup', validateEndereco);
-    elements.endereco.addEventListener('blur', validateEndereco);
-  }
-}
-
-// Public function to check if all fields are valid
-function isFormValid() {
-  return Object.values(validation).every((isValid) => isValid);
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  setupEventListeners();
 });
 
-// Make validation function globally available
-window.isFormValid = isFormValid;
-window.validation = validation;
+cpf.addEventListener("keyup", () => {
+  if (cpf.value.length !== 11) {
+    labelCPF.setAttribute("style", "color: red");
+    labelCPF.innerHTML = `CPF precisa ter 11 dígitos`;
+    cpf.setAttribute("style", "border-color: red");
+    validCPF = false;
+  } else {
+    labelCPF.setAttribute("style", "color: green");
+    labelCPF.innerHTML = "CPF";
+    cpf.setAttribute("style", "border-color: green");
+    validCPF = true;
+  }
+});
+
+email.addEventListener("keyup", () => {
+  if (!validateEmail(email.value)) {
+    labelEmail.setAttribute("style", "color: red");
+    labelEmail.innerHTML = `Email inválido`;
+    email.setAttribute("style", "border-color: red");
+    validEmail = false;
+  } else {
+    labelEmail.setAttribute("style", "color: green");
+    labelEmail.innerHTML = "Email";
+    email.setAttribute("style", "border-color: green");
+    validEmail = true;
+  }
+});
+
+telefone.addEventListener("keyup", () => {
+  if (telefone.value.length < 10) {
+    labelTelefone.setAttribute("style", "color: red");
+    labelTelefone.innerHTML = `Telefone precisa ter pelo menos 10 dígitos`;
+    telefone.setAttribute("style", "border-color: red");
+    validTelefone = false;
+  } else {
+    labelTelefone.setAttribute("style", "color: green");
+    labelTelefone.innerHTML = "Telefone";
+    telefone.setAttribute("style", "border-color: green");
+    validTelefone = true;
+  }
+});
+
+endereco.addEventListener("keyup", () => {
+  if (endereco.value === "") {
+    labelEndereco.setAttribute("style", "color: red");
+    labelEndereco.innerHTML = `Endereço precisa ser preenchido`;
+    endereco.setAttribute("style", "border-color: red");
+    validEndereco = false;
+  } else {
+    labelEndereco.setAttribute("style", "color: green");
+    labelEndereco.innerHTML = "Endereço";
+    endereco.setAttribute("style", "border-color: green");
+    validEndereco = true;
+  }
+});

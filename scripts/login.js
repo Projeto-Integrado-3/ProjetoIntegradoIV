@@ -1,129 +1,77 @@
-'use strict';
-
-// Form elements
-const elements = {
-  email: document.querySelector('#email'),
-  emailLabel: document.querySelector('#emailLabel'),
-  senha: document.querySelector('#senha'),
-  senhaLabel: document.querySelector('#senhaLabel'),
-  btnShowPassword: document.querySelector('.fa-eye'),
-};
-
-function resetFieldStyles() {
-  if (elements.emailLabel && elements.email) {
-    elements.emailLabel.setAttribute('style', 'color: initial');
-    elements.email.setAttribute('style', 'border-color: initial');
-  }
-
-  if (elements.senhaLabel && elements.senha) {
-    elements.senhaLabel.setAttribute('style', 'color: initial');
-    elements.senha.setAttribute('style', 'border-color: initial');
-  }
-}
-
-function setErrorStyles() {
-  if (elements.emailLabel && elements.email) {
-    elements.emailLabel.setAttribute('style', 'color: red');
-    elements.email.setAttribute('style', 'border-color: red');
-  }
-
-  if (elements.senhaLabel && elements.senha) {
-    elements.senhaLabel.setAttribute('style', 'color: red');
-    elements.senha.setAttribute('style', 'border-color: red');
-  }
-
-  if (elements.email) {
-    elements.email.focus();
-  }
-}
-
-function validateUser(email, senha) {
-  const listaUser = JSON.parse(localStorage.getItem('listaUser')) || [];
-
-  return listaUser.find((user) => user.email === email && user.senha === senha);
-}
-
-function generateToken() {
-  return Math.random().toString(16).substring(2);
-}
+let btn = document.querySelector(".fa-eye");
 
 function entrar() {
-  if (!elements.email || !elements.senha) {
+  let email = document.querySelector("#email");
+  let emailLabel = document.querySelector("#emailLabel");
+
+  let senha = document.querySelector("#senha");
+  let senhaLabel = document.querySelector("#senhaLabel");
+
+  let msgError = document.querySelector("#msgError");
+  let listaUser = [];
+
+  let userValid = {
+    email: "",
+    senha: "",
+  };
+
+  listaUser = JSON.parse(localStorage.getItem("listaUser")) || [];
+
+  listaUser.forEach((item) => {
+    if (email.value === item.email && senha.value === item.senha) {
+      userValid = {
+        email: item.email,
+        senha: item.senha,
+      };
+    }
+  });
+
+  if (
+    email.value !== "" &&
+    senha.value !== "" &&
+    email.value === userValid.email &&
+    senha.value === userValid.senha
+  ) {
     Swal.fire({
-      icon: 'error',
-      title: 'Erro',
-      text: 'Elementos do formulário não encontrados!',
-    });
-    return;
-  }
-
-  const email = elements.email.value.trim();
-  const senha = elements.senha.value;
-
-  // Reset previous error styles
-  resetFieldStyles();
-
-  // Validate inputs
-  if (!email || !senha) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Campos obrigatórios',
-      text: 'Por favor, preencha email e senha.',
-    });
-    return;
-  }
-
-  // Validate user credentials
-  const userValid = validateUser(email, senha);
-
-  if (userValid) {
-    // Generate and store authentication token
-    const token = generateToken();
-    localStorage.setItem('token', token);
-
-    // Store logged user data
-    const userLoggedData = {
-      email: userValid.email,
-      senha: userValid.senha,
-      usuario: userValid.nome,
-    };
-    localStorage.setItem('userLogado', JSON.stringify(userLoggedData));
-
-    Swal.fire({
-      icon: 'success',
-      title: 'Login realizado com sucesso!',
-      text: 'Você será redirecionado para a página inicial.',
+      icon: "success",
+      title: "Login realizado com sucesso!",
+      text: "Você será redirecionado para a página inicial.",
       timer: 2000,
       showConfirmButton: false,
     }).then(() => {
-      window.location.href = '../pages/dashboard/dashboard.html';
+      window.location.href = "../pages/dashboard/dashboard.html";
     });
-  } else {
-    setErrorStyles();
 
+    let token = Math.random().toString(16).substring(2);
+    localStorage.setItem("token", token);
+
+    const user = listaUser.find((user) => user.email === email.value);
+    if (user) {
+      userValid.usuario = user.nome;
+    }
+    localStorage.setItem("userLogado", JSON.stringify(userValid));
+    console.log("Token gerado:", token);
+  } else {
+    emailLabel.setAttribute("style", "color: red");
+    email.setAttribute("style", "border-color: red");
+    senhaLabel.setAttribute("style", "color: red");
+    senha.setAttribute("style", "border-color: red");
+    email.focus();
     Swal.fire({
-      icon: 'error',
-      title: 'Erro no login',
-      text: 'Usuário ou senha incorretos!',
-      confirmButtonText: 'Tentar novamente',
+      icon: "error",
+      title: "Erro no login",
+      text: "Usuário ou senha incorretos!",
+      confirmButtonText: "Tentar novamente",
     });
   }
 }
+btn.addEventListener("click", () => {
+  let inputSenha = document.querySelector("#senha");
+  console.log(inputSenha);
 
-function togglePasswordVisibility() {
-  if (!elements.senha) return;
-
-  const currentType = elements.senha.getAttribute('type');
-  elements.senha.setAttribute(
-    'type',
-    currentType === 'password' ? 'text' : 'password'
-  );
-}
-
-// Event listeners
-if (elements.btnShowPassword) {
-  elements.btnShowPassword.addEventListener('click', togglePasswordVisibility);
-}
-
-// Make entrar function globally available
-window.entrar = entrar;
+  if (inputSenha.getAttribute("type") == "password") {
+    inputSenha.setAttribute("type", "text");
+  } else {
+    inputSenha.setAttribute("type", "password");
+  }
+});
