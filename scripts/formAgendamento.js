@@ -1,16 +1,19 @@
 'use strict';
 
-// Form elements
-const elements = {
-  pacienteInput: document.getElementById('paciente'),
-  especialidadeSelect: document.getElementById('especialidade'),
-  profissionalSelect: document.getElementById('profissional'),
-  horarioSelect: document.getElementById('horario'),
-  idadeInput: document.getElementById('idade'),
-  dataBtns: document.querySelectorAll('.data-btn'),
-  confirmacaoInfo: document.querySelector('.confirmacao-info'),
-  confirmarBtn: document.querySelector('.confirmar-btn'),
-};
+let elements = {};
+
+function queryElements() {
+  elements = {
+    pacienteInput: document.getElementById('paciente'),
+    especialidadeSelect: document.getElementById('especialidade'),
+    profissionalSelect: document.getElementById('profissional'),
+    horarioSelect: document.getElementById('horario'),
+    idadeInput: document.getElementById('idade'),
+    dataBtns: document.querySelectorAll('.data-btn'),
+    confirmacaoInfo: document.querySelector('.confirmacao-info'),
+    confirmarBtn: document.querySelector('.confirmar-btn'),
+  };
+}
 
 let selectedDate = null;
 
@@ -102,7 +105,9 @@ function saveAppointment() {
 }
 
 // Event listeners setup
-function setupEventListeners() {
+function initFormAgendamento() {
+  queryElements();
+
   // Date buttons
   if (elements.dataBtns) {
     elements.dataBtns.forEach((btn) => {
@@ -141,6 +146,13 @@ function setupEventListeners() {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  setupEventListeners();
-});
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    initFormAgendamento,
+    formatTime,
+  };
+} else {
+  document.addEventListener('DOMContentLoaded', () => {
+    initFormAgendamento();
+  });
+}
