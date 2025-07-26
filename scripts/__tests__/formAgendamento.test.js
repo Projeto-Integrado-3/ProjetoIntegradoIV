@@ -1,9 +1,13 @@
-const { formatTime, initFormAgendamento } = require("../formAgendamento");
+const formatTime = require("../formatTime");
+const { initFormAgendamento } = require("../formAgendamento");
 
 // Mock Swal
 global.Swal = {
   fire: jest.fn(),
 };
+
+// Make formatTime globally available for the script being tested
+global.formatTime = formatTime;
 
 describe("formatTime", () => {
   it("should format time from HHmm to HH:mm", () => {
@@ -34,6 +38,7 @@ describe("formAgendamento interactions", () => {
       <button class="confirmar-btn">Confirmar</button>
     `;
     initFormAgendamento();
+    document.dispatchEvent(new Event("DOMContentLoaded"));
   });
 
   it("should update confirmation info when a date is selected", () => {

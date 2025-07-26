@@ -1,16 +1,19 @@
 'use strict';
 
-// Form elements
-const elements = {
-  pacienteInput: document.getElementById('paciente'),
-  especialidadeSelect: document.getElementById('especialidade'),
-  profissionalSelect: document.getElementById('profissional'),
-  horarioSelect: document.getElementById('horario'),
-  idadeInput: document.getElementById('idade'),
-  dataBtns: document.querySelectorAll('.data-btn'),
-  confirmacaoInfo: document.querySelector('.confirmacao-info'),
-  confirmarBtn: document.querySelector('.confirmar-btn'),
-};
+let elements = {};
+
+function queryElements() {
+  elements = {
+    pacienteInput: document.getElementById('paciente'),
+    especialidadeSelect: document.getElementById('especialidade'),
+    profissionalSelect: document.getElementById('profissional'),
+    horarioSelect: document.getElementById('horario'),
+    idadeInput: document.getElementById('idade'),
+    dataBtns: document.querySelectorAll('.data-btn'),
+    confirmacaoInfo: document.querySelector('.confirmacao-info'),
+    confirmarBtn: document.querySelector('.confirmar-btn'),
+  };
+}
 
 let selectedDate = null;
 
@@ -103,6 +106,8 @@ function saveAppointment() {
 
 // Event listeners setup
 function initFormAgendamento() {
+  queryElements();
+
   // Date buttons
   if (elements.dataBtns) {
     elements.dataBtns.forEach((btn) => {
