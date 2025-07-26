@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "## Descrição",
   "type": "module",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
@@ -24,6 +24,7 @@
   "devDependencies": {
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "prettier": "^3.6.2"
