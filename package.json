@@ -2,7 +2,8 @@
   "name": "projetointegradoiv",
   "version": "1.0.0",
   "description": "## Descrição",
-  "main": "index.js",
+  "type": "module",
+  "main": "index.js", 
   "scripts": {
     "test": "jest"
   },
