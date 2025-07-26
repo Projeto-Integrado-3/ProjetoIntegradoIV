@@ -102,7 +102,7 @@ function saveAppointment() {
 }
 
 // Event listeners setup
-function setupEventListeners() {
+function initFormAgendamento() {
   // Date buttons
   if (elements.dataBtns) {
     elements.dataBtns.forEach((btn) => {
@@ -141,6 +141,13 @@ function setupEventListeners() {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  setupEventListeners();
-});
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    initFormAgendamento,
+    formatTime,
+  };
+} else {
+  document.addEventListener('DOMContentLoaded', () => {
+    initFormAgendamento();
+  });
+}

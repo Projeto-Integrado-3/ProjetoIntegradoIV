@@ -16,14 +16,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Run tests
+        run: npm test
+
       - name: Run ESLint
-        run: npx eslint . --ext .js
+        run: npx eslint . --ext .js --cache
 
       - name: Run Prettier
         uses: creyD/prettier_action@v4.3

@@ -1,23 +1,29 @@
 {
-  "type": "module",
-  "name": "workspace",
+  "name": "projetointegradoiv",
   "version": "1.0.0",
-  "description": "![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)",
+  "description": "## Descrição",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "http-server": "^14.1.1",
-    "prettier": "^3.6.2"
+  "bugs": {
+    "url": "https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/issues"
   },
+  "homepage": "https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV#readme",
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
-    "eslint": "^9.31.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.3"
+    "eslint": "^9.32.0",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
+    "prettier": "^3.6.2"
   }
 }
