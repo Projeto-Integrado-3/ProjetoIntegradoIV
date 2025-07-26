@@ -1,5 +1,5 @@
-const formatTime = require("../formatTime");
-const { initFormAgendamento } = require("../formAgendamento");
+const formatTime = require('../formatTime');
+const { initFormAgendamento } = require('../formAgendamento');
 
 // Mock Swal
 global.Swal = {
@@ -9,14 +9,14 @@ global.Swal = {
 // Make formatTime globally available for the script being tested
 global.formatTime = formatTime;
 
-describe("formatTime", () => {
-  it("should format time from HHmm to HH:mm", () => {
-    expect(formatTime("1030")).toBe("10:30");
-    expect(formatTime("0900")).toBe("09:00");
+describe('formatTime', () => {
+  it('should format time from HHmm to HH:mm', () => {
+    expect(formatTime('1030')).toBe('10:30');
+    expect(formatTime('0900')).toBe('09:00');
   });
 });
 
-describe("formAgendamento interactions", () => {
+describe('formAgendamento interactions', () => {
   beforeEach(() => {
     // Reset mocks
     global.Swal.fire.mockClear();
@@ -38,20 +38,20 @@ describe("formAgendamento interactions", () => {
       <button class="confirmar-btn">Confirmar</button>
     `;
     initFormAgendamento();
-    document.dispatchEvent(new Event("DOMContentLoaded"));
+    document.dispatchEvent(new Event('DOMContentLoaded'));
   });
 
-  it("should update confirmation info when a date is selected", () => {
-    const dataBtn = document.querySelector(".data-btn");
+  it('should update confirmation info when a date is selected', () => {
+    const dataBtn = document.querySelector('.data-btn');
     dataBtn.click();
 
-    const confirmacaoInfo = document.querySelector(".confirmacao-info");
+    const confirmacaoInfo = document.querySelector('.confirmacao-info');
     const year = new Date().getFullYear();
 
-    expect(confirmacaoInfo.innerHTML).toContain("Paciente: John Doe");
-    expect(confirmacaoInfo.innerHTML).toContain("Especialidade: Cardiologia");
-    expect(confirmacaoInfo.innerHTML).toContain("Profissional: Dr. Smith");
+    expect(confirmacaoInfo.innerHTML).toContain('Paciente: John Doe');
+    expect(confirmacaoInfo.innerHTML).toContain('Especialidade: Cardiologia');
+    expect(confirmacaoInfo.innerHTML).toContain('Profissional: Dr. Smith');
     expect(confirmacaoInfo.innerHTML).toContain(`Data: 22/07/${year}`);
-    expect(confirmacaoInfo.innerHTML).toContain("Horário: 10:00");
+    expect(confirmacaoInfo.innerHTML).toContain('Horário: 10:00');
   });
 });
