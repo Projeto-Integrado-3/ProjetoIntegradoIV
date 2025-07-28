@@ -39,6 +39,7 @@ O processo de Integração Contínua (CI) configurado neste repositório tem com
 Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/workflows/ci.yml`. Este workflow é acionado automaticamente sempre que um novo `push` ou `pull request` é feito para a branch `main`.
 
 As principais etapas do nosso workflow são:
+
 1.  **`actions/checkout@v4`**: Uma ação padrão que permite ao nosso workflow acessar o código-fonte do repositório.
 2.  **Ação de Linting/Formatting**: Uma ação que executa o Prettier para verificar se todo o código está formatado corretamente de acordo com nossas regras.
 3.  **Ação de Validação de HTML**: Uma ação que valida a sintaxe dos nossos arquivos HTML para garantir que não há erros estruturais.
