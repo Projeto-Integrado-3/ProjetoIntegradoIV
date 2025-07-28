@@ -50,6 +50,9 @@ Este processo executa as tarefas de verificação e nos notifica sobre o sucesso
 
 **Integração Contínua (CI)** é uma prática de desenvolvimento de software onde os desenvolvedores integram seu código novo a um repositório compartilhado várias vezes ao dia. Cada integração é então verificada por um processo automatizado que compila o código e executa testes.
 
+**Analogia para Estudantes:**
+Imagine que você está escrevendo um trabalho em grupo. Em vez de cada pessoa escrever uma parte isoladamente e depois tentar juntar tudo (o que geraria muitos conflitos), cada pessoa escreve pequenas seções e as integra frequentemente, verificando se o texto ainda faz sentido como um todo. A CI faz exatamente isso, mas com código.
+
 **Por que isso é importante para quem está aprendendo a programar?**
 
 Para estudantes e novos programadores, adotar a CI desde cedo traz vários benefícios:
@@ -66,10 +69,10 @@ Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, 
 ## Estrutura do Projeto
 
 ```
-saudeprime/
+ProjetoIntegradoIV/
 ├── 📁 .github/workflows/      # Configurações de CI/CD
 │   └── ci.yml               # Pipeline de integração contínua
-├── 📁 assets/                # Recursos estáticos (imagens, logos)
+├── 📁 assets/                # Recursos estáticos (logo)
 ├── 📁 pages/                 # Páginas HTML do sistema
 │   ├── 📁 dashboard/        # Painel administrativo
 │   ├── 📁 pacientes/        # Gestão de pacientes
@@ -77,10 +80,15 @@ saudeprime/
 ├── 📁 scripts/               # Scripts JavaScript
 │   └── 📁 __tests__/       # Testes unitários
 ├── 📁 styles/                # Folhas de estilo CSS
-├── 🔧 eslint.config.js      # Configuração do ESLint
-├── 🔧 jest.config.js         # Configuração do Jest
-├── 🔧 package.json          # Dependências e scripts npm
-└── 📖 README.md              # Documentação do projeto
+├── 📄 .prettierignore        # Ignora arquivos da formatação Prettier
+├── 🔧 .prettierrc.json       # Regras de configuração do Prettier
+├── 🔧 eslint.config.js       # Regras de configuração do ESLint
+├── 📄 index.css              # Estilização da página principal
+├── 📄 index.html             # Página inicial do projeto
+├── 📄 LICENSE                # Licença do projeto
+├── 📄 package-lock.json      # Lockfile de dependências (gerado)
+├── 🔧 package.json           # Dependências e scripts do projeto
+└── 📖 README.md              # Documentação principal do projeto
 ```
 
 ## Qualidade de Código e Testes
@@ -144,7 +152,7 @@ O projeto implementa testes unitários com **Jest** e **Testing Library**:
 
 1.  Clone o repositório:
     ```bash
-    git clone [https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git)
+    git clone [https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git]
     ```
 2.  Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
 3.  Configure o Live Server para visualizar o projeto localmente:
