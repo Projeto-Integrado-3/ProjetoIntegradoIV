@@ -1,10 +1,17 @@
 # Sistema de Agendamento De Consultas Médicas
 
 ![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)
+![Node.js](https://img.shields.io/badge/node.js-20.x-green)
+![ESLint](https://img.shields.io/badge/ESLint-passing-brightgreen)
+![Jest](https://img.shields.io/badge/Tests-Jest-red)
 
 ## Descrição
 
-Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado III do curso de Análise e Desenvolvimento de Sistemas. O objetivo é criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
+Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado IV do curso de Análise e Desenvolvimento de Sistemas.
+
+## O objetivo
+
+Criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consultas, tanto para pacientes quanto para profissionais de saúde.
 
 ## Equipe do Projeto
 
@@ -13,6 +20,26 @@ Valdeilson Bezerra de Lima - 2023010306
 Marcondes Alves Duarte - 2023010217
 
 Rayane Amaro dos Santos - 2023010280
+
+## Estrutura do Projeto
+
+```
+saudeprime/
+├── 📁 .github/workflows/     # Configurações de CI/CD
+│   └── ci.yml               # Pipeline de integração contínua
+├── 📁 assets/               # Recursos estáticos (imagens, logos)
+├── 📁 pages/                # Páginas HTML do sistema
+│   ├── 📁 dashboard/        # Painel administrativo
+│   ├── 📁 pacientes/        # Gestão de pacientes
+│   └── 📁 profissionalSaude/ # Gestão de profissionais
+├── 📁 scripts/              # Scripts JavaScript
+│   └── 📁 __tests__/        # Testes unitários
+├── 📁 styles/               # Folhas de estilo CSS
+├── 🔧 eslint.config.js      # Configuração do ESLint
+├── 🔧 jest.config.js        # Configuração do Jest
+├── 🔧 package.json          # Dependências e scripts npm
+└── 📖 README.md            # Documentação do projeto
+```
 
 ## EP1: Configuração da Integração Contínua (CI)
 
@@ -42,6 +69,35 @@ Para estudantes e novos programadores, adotar a CI desde cedo traz vários benef
 
 Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, permitindo que você se concentre em aprender, criar novas funcionalidades e se tornar um desenvolvedor melhor.
 
+## 🔍 Qualidade de Código e Testes
+
+### 🛠️ ESLint + Prettier
+
+O projeto utiliza uma configuração moderna de qualidade de código:
+
+#### ⚙️ **Configuração:**
+
+- **ESLint v9** com configuração flat config (`eslint.config.js`)
+- **Prettier integrado** para evitar conflitos de formatação
+- **Suporte ES2021+** e ambiente browser/Node.js
+- **Variáveis globais** configuradas (SweetAlert2, Jest, DOM APIs)
+
+#### 🎯 **Benefícios:**
+
+- ✅ Detecção automática de erros de sintaxe e lógica
+- ✅ Formatação consistente (aspas simples, semicolons, indentação)
+- ✅ Aplicação de boas práticas JavaScript
+- ✅ Feedback imediato durante desenvolvimento
+
+### 🧪 Sistema de Testes
+
+O projeto implementa testes unitários com **Jest** e **Testing Library**:
+
+- **Ambiente jsdom** para simulação de browser
+- **Mocks configurados** para SweetAlert2 e localStorage
+- **Cobertura de código** para funções críticas
+- **Testes de validação** para formulários e autenticação
+
 ## Funcionalidades Principais
 
 - Agendamento de consultas online.
@@ -56,10 +112,22 @@ Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, 
 
 ## Tecnologias Utilizadas
 
-- **Frontend:** HTML5, CSS3, JavaScript.
-- **Banco de dados:** LocalStorage (para persistência de dados no navegador).
-- **Bibliotecas:** SweetAlert2 (para notificações e alertas).
-- **Qualidade e Automação:** Prettier, GitHub Actions.
+### Frontend
+
+- **HTML5**: Estrutura semântica das páginas
+- **CSS3**: Estilização moderna com variáveis CSS
+- **JavaScript ES6+**: Lógica de interface e interações
+- **SweetAlert2**: Sistema de alertas modernos
+
+### Ferramentas de Desenvolvimento
+
+- **Node.js 20**: Runtime JavaScript
+- **ESLint 9**: Análise estática de código
+- **Prettier**: Formatação automática de código
+- **Jest**: Framework de testes unitários
+- **GitHub Actions**: Integração e entrega contínua (CI/CD)
+- **Live Server**: Servidor local para desenvolvimento
+- **Visual Studio Code**: Editor de código com suporte a extensões
 
 ## Instalação
 
