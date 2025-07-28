@@ -1,13 +1,13 @@
-# Sistema de Agendamento De Consultas Médicas
+# Sistema de Agendamento de Consultas
 
 ![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)
 ![Node.js](https://img.shields.io/badge/node.js-20.x-green)
 ![ESLint](https://img.shields.io/badge/ESLint-passing-brightgreen)
-![Jest](https://img.shields.io/badge/Tests-Jest-red)
+![Jest](https://img.shields.io/badge/Tests-Jest-blue)
 
 ## Descrição
 
-Este projeto consiste em um sistema de agendamento de consultas médicas, desenvolvido como parte da disciplina de Projeto Integrado IV do curso de Análise e Desenvolvimento de Sistemas.
+Este projeto consiste em um sistema de agendamento de consultas, desenvolvido como parte da disciplina de Projeto Integrado IV do curso de Análise e Desenvolvimento de Sistemas.
 
 ## O objetivo
 
@@ -15,44 +15,35 @@ Criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consu
 
 ## Equipe do Projeto
 
-Valdeilson Bezerra de Lima - 2023010306
+- Valdeilson Bezerra de Lima - 2023010306
 
-Marcondes Alves Duarte - 2023010217
+- Marcondes Alves Duarte - 2023010217
 
-Rayane Amaro dos Santos - 2023010280
+- Rayane Amaro dos Santos - 2023010280
 
-## Estrutura do Projeto
-
-```
-saudeprime/
-├── 📁 .github/workflows/     # Configurações de CI/CD
-│   └── ci.yml               # Pipeline de integração contínua
-├── 📁 assets/               # Recursos estáticos (imagens, logos)
-├── 📁 pages/                # Páginas HTML do sistema
-│   ├── 📁 dashboard/        # Painel administrativo
-│   ├── 📁 pacientes/        # Gestão de pacientes
-│   └── 📁 profissionalSaude/ # Gestão de profissionais
-├── 📁 scripts/              # Scripts JavaScript
-│   └── 📁 __tests__/        # Testes unitários
-├── 📁 styles/               # Folhas de estilo CSS
-├── 🔧 eslint.config.js      # Configuração do ESLint
-├── 🔧 jest.config.js        # Configuração do Jest
-├── 🔧 package.json          # Dependências e scripts npm
-└── 📖 README.md            # Documentação do projeto
-```
+---
 
 ## EP1: Configuração da Integração Contínua (CI)
+
+Esta seção detalha o cumprimento do **Entregável Parcial 1**.
 
 **Objetivo do Processo de CI:**
 
 O processo de Integração Contínua (CI) configurado neste repositório tem como objetivo principal automatizar a verificação da qualidade e da consistência do nosso código. Para isso, implementamos duas tarefas automatizadas:
 
 1.  **Linting com Prettier:** Garante que todo o código (HTML, CSS, JavaScript) siga um padrão de formatação consistente.
-2.  **Validação de HTML:** Verifica se os arquivos HTML do dashboard (`dashboard.html`, `formAgendamento.html`, `historico.html`) possuem uma sintaxe válida.
+2.  **Validação de HTML:** Verifica se os arquivos HTML do projeto possuem uma sintaxe válida.
 
 **Configuração:**
 
-Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/workflows/ci.yml`. Este workflow é acionado automaticamente sempre que um novo `push` ou `pull request` é feito para a branch `main`. Ele executa as tarefas de verificação e nos notifica sobre o sucesso ou falha da análise, ajudando a manter a integridade do projeto.
+Criamos um workflow utilizando **GitHub Actions**, definido no arquivo `.github/workflows/ci.yml`. Este workflow é acionado automaticamente sempre que um novo `push` ou `pull request` é feito para a branch `main`.
+
+As principais etapas do nosso workflow são:
+1.  **`actions/checkout@v4`**: Uma ação padrão que permite ao nosso workflow acessar o código-fonte do repositório.
+2.  **Ação de Linting/Formatting**: Uma ação que executa o Prettier para verificar se todo o código está formatado corretamente de acordo com nossas regras.
+3.  **Ação de Validação de HTML**: Uma ação que valida a sintaxe dos nossos arquivos HTML para garantir que não há erros estruturais.
+
+Este processo executa as tarefas de verificação e nos notifica sobre o sucesso ou falha da análise, ajudando a manter a integridade do projeto.
 
 ## [Componente Extensionista] O que é Integração Contínua (CI) e por que é importante?
 
@@ -69,27 +60,46 @@ Para estudantes e novos programadores, adotar a CI desde cedo traz vários benef
 
 Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, permitindo que você se concentre em aprender, criar novas funcionalidades e se tornar um desenvolvedor melhor.
 
-## 🔍 Qualidade de Código e Testes
+---
 
-### 🛠️ ESLint + Prettier
+## Estrutura do Projeto
+
+```
+saudeprime/
+├── 📁 .github/workflows/      # Configurações de CI/CD
+│   └── ci.yml               # Pipeline de integração contínua
+├── 📁 assets/                # Recursos estáticos (imagens, logos)
+├── 📁 pages/                 # Páginas HTML do sistema
+│   ├── 📁 dashboard/        # Painel administrativo
+│   ├── 📁 pacientes/        # Gestão de pacientes
+│   └── 📁 profissionalSaude/ # Gestão de profissionais
+├── 📁 scripts/               # Scripts JavaScript
+│   └── 📁 __tests__/       # Testes unitários
+├── 📁 styles/                # Folhas de estilo CSS
+├── 🔧 eslint.config.js      # Configuração do ESLint
+├── 🔧 jest.config.js         # Configuração do Jest
+├── 🔧 package.json          # Dependências e scripts npm
+└── 📖 README.md              # Documentação do projeto
+```
+
+## Qualidade de Código e Testes
+
+### ESLint + Prettier
 
 O projeto utiliza uma configuração moderna de qualidade de código:
 
-#### ⚙️ **Configuração:**
+- **Configuração:**
+  - **ESLint v9** com configuração flat config (`eslint.config.js`)
+  - **Prettier integrado** para evitar conflitos de formatação
+  - **Suporte ES2021+** e ambiente browser/Node.js
+  - **Variáveis globais** configuradas (SweetAlert2, Jest, DOM APIs)
+- **Benefícios:**
+  - Detecção automática de erros de sintaxe e lógica
+  - Formatação consistente (aspas simples, semicolons, indentação)
+  - Aplicação de boas práticas JavaScript
+  - Feedback imediato durante desenvolvimento
 
-- **ESLint v9** com configuração flat config (`eslint.config.js`)
-- **Prettier integrado** para evitar conflitos de formatação
-- **Suporte ES2021+** e ambiente browser/Node.js
-- **Variáveis globais** configuradas (SweetAlert2, Jest, DOM APIs)
-
-#### 🎯 **Benefícios:**
-
-- ✅ Detecção automática de erros de sintaxe e lógica
-- ✅ Formatação consistente (aspas simples, semicolons, indentação)
-- ✅ Aplicação de boas práticas JavaScript
-- ✅ Feedback imediato durante desenvolvimento
-
-### 🧪 Sistema de Testes
+### Sistema de Testes
 
 O projeto implementa testes unitários com **Jest** e **Testing Library**:
 
@@ -131,35 +141,32 @@ O projeto implementa testes unitários com **Jest** e **Testing Library**:
 
 ## Instalação
 
-1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/seu-usuario//ProjetoIntegradoIV.git
-   ```
-
-2. Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
-
-3. Configure o Live Server para visualizar o projeto localmente:
-   - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
-   - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+1.  Clone o repositório:
+    ```bash
+    git clone [https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git)
+    ```
+2.  Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
+3.  Configure o Live Server para visualizar o projeto localmente:
+    - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
+    - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
 
 ## Uso
 
-1. Acesse a interface do sistema através do navegador.
-2. Cadastre-se como usuário.
-3. Realize login com email e senha cadastrada para acessar o painel de controle.
-4. Agende, visualize ou cancele consultas conforme necessário.
-5. Utilize as funcionalidades de cadastro e edição de pacientes e profissionais de saúde.
+1.  Acesse a interface do sistema através do navegador.
+2.  Cadastre-se como usuário.
+3.  Realize login com email e senha cadastrada para acessar o painel de controle.
+4.  Agende, visualize ou cancele consultas conforme necessário.
+5.  Utilize as funcionalidades de cadastro e edição de pacientes e profissionais de saúde.
 
 ## Contribuição
 
 Contribuições são bem-vindas! Siga estas diretrizes:
 
-1. Faça um fork do repositório.
-2. Crie uma branch para sua funcionalidade: `git checkout -b minha-funcionalidade`.
-3. Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`.
-4. Faça push para a branch: `git push origin minha-funcionalidade`.
-5. Crie um pull request.
+1.  Faça um fork do repositório.
+2.  Crie uma branch para sua funcionalidade: `git checkout -b minha-funcionalidade`.
+3.  Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`.
+4.  Faça push para a branch: `git push origin minha-funcionalidade`.
+5.  Crie um pull request.
 
 ## Licença
 
