@@ -29,7 +29,7 @@ window.addEventListener('load', function () {
         `;
   });
 
-  appointmentsDiv.innerHTML = appointmentsHTML;
+  appointmentsDiv.innerHTML = appointmentsHTML
 });
 
 function formatDate(dateStr) {
