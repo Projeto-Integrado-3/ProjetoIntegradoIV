@@ -1,13 +1,14 @@
-# Backend
+# Backend - Sistema de Agendamento
 
-Este é o backend do projeto, responsável por gerenciar os dados dos pacientes.
+Este é o backend do projeto, responsável por gerenciar os dados de pacientes, agendamentos e outras entidades do sistema.
 
 ## Tecnologias Utilizadas
 
 *   **Node.js**: Ambiente de execução do JavaScript no servidor.
 *   **Express**: Framework para construção de APIs REST.
 *   **Prisma**: ORM para interação com o banco de dados.
-*   **PostgreSQL**: Banco de dados relacional.
+*   **PostgreSQL**: Banco de dados relacional, com hospedagem na **[Neon](https://neon.tech/)**.
+*   **Swagger**: Ferramenta para documentação e teste interativo da API.
 *   **Nodemon**: Ferramenta para reiniciar o servidor automaticamente durante o desenvolvimento.
 *   **CORS**: Middleware para habilitar o Cross-Origin Resource Sharing.
 
@@ -15,72 +16,50 @@ Este é o backend do projeto, responsável por gerenciar os dados dos pacientes.
 
 Siga as instruções abaixo para executar o projeto em seu ambiente de desenvolvimento.
 
-### Pré-requisitos
+### 1. Pré-requisitos
 
 *   [Node.js](https://nodejs.org/en/) (versão 18 ou superior)
-*   [PostgreSQL](https://www.postgresql.org/download/)
 
-### Instalação
+### 2. Instalação e Configuração
 
-1.  Clone o repositório:
-    ```bash
-    git clone <url-do-repositorio>
-    ```
-2.  Navegue até o diretório do backend:
+1.  Navegue até o diretório do backend e instale as dependências:
     ```bash
     cd backend
-    ```
-3.  Instale as dependências:
-    ```bash
     npm install
     ```
-4.  Configure as variáveis de ambiente. Renomeie o arquivo `.env.example` para `.env` e preencha com as informações do seu banco de dados:
-    ```
-    DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-    ```
-5.  Execute as migrações do banco de dados:
+
+2.  **Configure o Banco de Dados (Neon)**:
+    *   Este projeto é configurado para usar PostgreSQL hospedado na plataforma **Neon**.
+    *   Renomeie o arquivo `.env.exemple` para `.env`.
+    *   Obtenha a **connection string** do seu banco de dados no painel da Neon.
+    *   Cole a connection string no arquivo `.env`, no seguinte formato:
+        ```
+        DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=require"
+        ```
+
+3.  **Execute as Migrations**:
+    Com o banco de dados configurado, aplique o schema da aplicação:
     ```bash
     npx prisma migrate dev
     ```
-6.  Inicie o servidor de desenvolvimento:
-    ```bash
-    npm run dev
-    ```
 
-O servidor estará disponível em `http://localhost:3000`.
+### 3. Executando a Aplicação
 
-## Endpoints da API
+Para iniciar o servidor de desenvolvimento, execute:
 
-### Pacientes
+```bash
+npm run dev
+```
 
-*   **GET /pacientes/list**: Lista todos os pacientes.
-*   **POST /pacientes**: Cria um novo paciente.
+O servidor estará disponível em `http://localhost:3333` (ou a porta definida no seu ambiente).
 
-    **Corpo da Requisição:**
-    ```json
-    {
-      "nome": "string",
-      "cpf": "string",
-      "idade": "integer",
-      "email": "string",
-      "telefone": "string",
-      "endereco": "string"
-    }
-    ```
-*   **PUT /pacientes/:id**: Atualiza um paciente existente.
+## Documentação da API (Swagger)
 
-    **Corpo da Requisição:**
-    ```json
-    {
-      "nome": "string",
-      "cpf": "string",
-      "idade": "integer",
-      "email": "string",
-      "telefone": "string",
-      "endereco": "string"
-    }
-    ```
-*   **DELETE /pacientes/:id**: Deleta um paciente existente.
+A documentação completa e interativa da API foi gerada com o Swagger.
+
+Com o servidor em execução, acesse a seguinte URL no seu navegador para visualizar e testar todos os endpoints:
+
+[http://localhost:3333/api-docs](http://localhost:3333/api-docs)
 
 ## Estrutura do Projeto
 
@@ -91,29 +70,11 @@ backend/
 │   └── migrations/
 ├── src/
 │   ├── controllers/
-│   │   └── paciente/
 │   ├── services/
-│   │   └── pacientes/
-│   ├── .env.example
+│   ├── .env.exemple
 │   ├── routes.js
 │   └── server.js
 ├── .gitignore
 ├── package.json
 └── README.md
 ```
-
-## Modelo do Banco de Dados
-
-O schema do banco de dados é definido no arquivo `prisma/schema.prisma`.
-
-### Modelo `Paciente`
-
-| Campo     | Tipo     | Descrição                  |
-| :-------- | :------- | :------------------------- |
-| `id`      | `String` | ID único do paciente (CUID) |
-| `nome`    | `String` | Nome do paciente           |
-| `cpf`     | `String` | CPF do paciente (único)    |
-| `idade`   | `Int`    | Idade do paciente          |
-| `email`   | `String` | Email do paciente          |
-| `telefone`| `String` | Telefone do paciente       |
-| `endereco`| `String` | Endereço do paciente       |
