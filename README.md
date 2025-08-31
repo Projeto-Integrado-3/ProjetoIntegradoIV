@@ -148,16 +148,143 @@ O projeto implementa testes unitários com **Jest** e **Testing Library**:
 - **Live Server**: Servidor local para desenvolvimento
 - **Visual Studio Code**: Editor de código com suporte a extensões
 
-## Instalação
+## Entregável Parcial 2: Desenvolvimento da API RESTful
 
-1.  Clone o repositório:
-    ```bash
-    git clone [https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git]
-    ```
-2.  Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
-3.  Configure o Live Server para visualizar o projeto localmente:
-    - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
-    - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+Esta seção detalha o cumprimento do **Entregável Parcial 2**. Aqui, construímos o backend e a API RESTful para gerenciar os dados da aplicação.
+
+
+## Como executar o backend localmente
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git
+   ```
+2. Acesse o diretório do backend:
+   ```bash
+   cd ProjetoIntegradoIV/backend
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+4. Configure a variável de ambiente no arquivo `.env`:
+   ```env
+   DATABASE_URL="postgresql://neondb_owner:npg_NDROVh7C1vMq@ep-flat-dew-acyjf21f-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+   ```
+5. Execute as migrações do banco de dados:
+   ```bash
+   npx prisma migrate dev
+   ```
+6. Inicie o servidor:
+   ```bash
+   npm run dev
+   ```
+O backend estará disponível em `http://localhost:3333`.
+
+## Como testar a API
+
+Você pode testar os endpoints usando ferramentas como Postman, Insomnia ou `curl`.
+
+### Criar paciente (POST /pacientes)
+```bash
+curl -X POST http://localhost:3333/pacientes \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nome": "Maria Silva",
+    "cpf": "12345678900",
+    "idade": 28,
+    "email": "maria@exemplo.com",
+    "telefone": "11999999999",
+    "endereco": "Rua das Flores, 100"
+  }'
+```
+**Resposta:**
+```json
+{
+  "id": "ckxyz...",
+  "nome": "Maria Silva",
+  "cpf": "12345678900",
+  "idade": 28,
+  "email": "maria@exemplo.com",
+  "telefone": "11999999999",
+  "endereco": "Rua das Flores, 100",
+  "createdAt": "2025-08-18T23:00:00.000Z",
+  "updatedAt": "2025-08-18T23:00:00.000Z"
+}
+```
+
+### Atualizar paciente (PUT /pacientes/:id)
+```bash
+curl -X PUT http://localhost:3333/pacientes/ckxyz... \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nome": "Maria Silva",
+    "cpf": "12345678900",
+    "idade": 29,
+    "email": "maria@exemplo.com",
+    "telefone": "11999999999",
+    "endereco": "Rua das Flores, 100"
+  }'
+```
+**Resposta:**
+```json
+{
+  "id": "ckxyz...",
+  "nome": "Maria Silva",
+  "cpf": "12345678900",
+  "idade": 29,
+  "email": "maria@exemplo.com",
+  "telefone": "11999999999",
+  "endereco": "Rua das Flores, 100",
+  "createdAt": "2025-08-18T23:00:00.000Z",
+  "updatedAt": "2025-08-18T23:10:00.000Z"
+}
+```
+
+### Listar pacientes (GET /pacientes/list)
+```bash
+curl http://localhost:3333/pacientes/list
+```
+**Resposta:**
+```json
+[
+  {
+    "id": "ckxyz...",
+    "nome": "Maria Silva",
+    "cpf": "12345678900",
+    "idade": 29,
+    "email": "maria@exemplo.com",
+    "telefone": "11999999999",
+    "endereco": "Rua das Flores, 100",
+    "createdAt": "2025-08-18T23:00:00.000Z",
+    "updatedAt": "2025-08-18T23:10:00.000Z"
+  }
+]
+```
+
+### Deletar paciente (DELETE /pacientes/:id)
+```bash
+curl -X DELETE http://localhost:3333/pacientes/ckxyz...
+```
+**Resposta:**
+Status 204 (No Content)
+
+## Documentação
+
+Consulte a documentação detalhada dos endpoints e exemplos no arquivo [`backend/README.md`](./backend/README.md).
+
+---
+
+## Possíveis usos da nossa API
+
+Esta API pode ser utilizada por clínicas, consultórios médicos, hospitais ou até mesmo profissionais autônomos para gerenciar o cadastro de pacientes, agendar consultas, manter o histórico de atendimentos e facilitar a comunicação com os pacientes.
+
+**Exemplo de uso real:**
+
+- Uma clínica pode integrar esta API ao seu sistema de gestão para automatizar o cadastro de novos pacientes, atualizar informações e consultar rapidamente o histórico de atendimentos.
+- Profissionais autônomos podem usar a API para organizar seus agendamentos e manter os dados dos pacientes sempre atualizados, melhorando o atendimento e a experiência do paciente.
+
+Ao conectar o projeto a problemas reais, incentivamos o uso da tecnologia para tornar processos de saúde mais eficientes, acessíveis e organizados.
 
 ## Uso
 

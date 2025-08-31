@@ -1,7 +1,7 @@
 {
-  "name": "projetointegradoiv",
+  "name": "saudeprime-frontend",
   "version": "1.0.0",
-  "description": "## Descrição",
+  "description": "Frontend para o sistema SaúdePrime de agendamento de consultas",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Equipe SaúdePrime",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/issues"
