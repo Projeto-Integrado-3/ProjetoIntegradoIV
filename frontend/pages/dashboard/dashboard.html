@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="/styles/footer.css" />
-    <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/dashboard.css" />
+    <link rel="stylesheet" href="/frontend/styles/global.css" />
+    <link rel="stylesheet" href="/frontend/styles/footer.css" />
+    <link rel="stylesheet" href="/frontend/styles/header.css" />
+    <link rel="stylesheet" href="/frontend/styles/dashboard.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -20,8 +20,8 @@
   <body>
     <header>
       <div class="container">
-        <a href="/pages/dashboard/dashboard.html"
-          ><img src="/assets/logo.png" alt="Logo SaúdePrime" class="logo"
+        <a href="/frontend/pages/dashboard/dashboard.html"
+          ><img src="/frontend/assets/logo.png" alt="Logo SaúdePrime" class="logo"
         /></a>
       </div>
     </header>
@@ -29,20 +29,20 @@
     <nav>
       <ul>
         <li>
-          <a href="/pages/dashboard/dashboard.html"
+          <a href="/frontend/pages/dashboard/dashboard.html"
             ><i class="fas fa-home"></i>Início</a
           >
         </li>
-        <li><a href="/pages/agenda_medica.html">Consultas</a></li>
-        <li><a href="/pages/agenda.html">Agenda</a></li>
-        <li><a href="/pages/dashboard/historico.html">Histórico</a></li>
-        <li><a href="/pages/pacientes/listarPacientes.html">Pacientes</a></li>
+        <li><a href="/frontend/pages/agenda_medica.html">Consultas</a></li>
+        <li><a href="/frontend/pages/agenda.html">Agenda</a></li>
+        <li><a href="/frontend/pages/dashboard/historico.html">Histórico</a></li>
+        <li><a href="/frontend/pages/pacientes/listarPacientes.html">Pacientes</a></li>
         <li>
-          <a href="/pages/profissionalSaude/listarProfissional.html"
+          <a href="/frontend/pages/profissionalSaude/listarProfissional.html"
             >Profissional de Saúde</a
           >
         </li>
-        <li><a href="/pages/exames.html">Exames</a></li>
+        <li><a href="/frontend/pages/exames.html">Exames</a></li>
         <li>
           <button type="button" id="logout-button" onclick="sair()">
             Sair
@@ -63,13 +63,13 @@
           </div>
           <div class="button-container">
             <button
-              onclick="window.location.href='/pages/dashboard/formAgendamento.html'"
+              onclick="window.location.href='/frontend/pages/dashboard/formAgendamento.html'"
             >
               Agendar Consultas
             </button>
             <button
               class="green-button"
-              onclick="window.location.href='/pages/dashboard/historico.html'"
+              onclick="window.location.href='/frontend/pages/dashboard/historico.html'"
             >
               Ver Histórico
             </button>
@@ -91,6 +91,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/scripts/logout.js"></script>
+    <script src="/frontend/scripts/logout.js"></script>
   </body>
 </html>

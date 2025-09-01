@@ -123,7 +123,7 @@ window.cadastrar = function () {
       showConfirmButton: false,
     }).then(() => {
       // Redireciona para a tela de login
-      window.location.href = '/pages/login.html';
+      window.location.href = '/frontend/pages/login.html';
     });
   } else {
     Swal.fire({

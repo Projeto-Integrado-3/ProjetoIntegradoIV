@@ -100,7 +100,7 @@ function saveAppointment() {
     timer: 2000,
     showConfirmButton: false,
   }).then(() => {
-    window.location.href = '/pages/agenda.html';
+    window.location.href = '/frontend/pages/agenda.html';
   });
 }
 
