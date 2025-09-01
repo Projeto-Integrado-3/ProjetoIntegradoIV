@@ -4,6 +4,36 @@
 ![Node.js](https://img.shields.io/badge/node.js-20.x-green)
 ![ESLint](https://img.shields.io/badge/ESLint-passing-brightgreen)
 ![Jest](https://img.shields.io/badge/Tests-Jest-green)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-blue)](https://www.prisma.io/)
+[![Express](https://img.shields.io/badge/Express.js-Backend-lightgrey)](https://expressjs.com/)
+[![Swagger](https://img.shields.io/badge/Swagger-API%20Docs-yellowgreen)](https://swagger.io/)
+[![Docker](https://img.shields.io/badge/Docker-Containerization-blue)](https://www.docker.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)](https://www.postgresql.org/)
+
+[//]: # (Sumário)
+## Sumário
+
+- [Descrição](#descrição)
+- [O objetivo](#o-objetivo)
+- [Equipe do Projeto](#equipe-do-projeto)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [EP1: Configuração da Integração Contínua (CI)](#ep1-configuração-da-integração-contínua-ci)
+- [Componente Extensionista: O que é Integração Contínua (CI) e por que é importante?](#componente-extensionista-o-que-é-integração-contínua-ci-e-por-que-é-importante)
+- [Qualidade de Código e Testes](#qualidade-de-código-e-testes)
+- [Funcionalidades Principais](#funcionalidades-principais)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [EP 2: Desenvolvimento da API RESTful](#ep-2-desenvolvimento-da-api-restful)
+- [Como executar o backend localmente](#como-executar-o-backend-localmente)
+- [Como testar a API](#como-testar-a-api)
+- [Documentação](#documentação)
+- [Possíveis usos da nossa API](#possíveis-usos-da-nossa-api)
+- [Uso](#uso)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
+- [Contato](#contato)
+- [Informações Adicionais](#informações-adicionais)
+- [Telas do projeto](#telas-do-projeto)
+
 
 ## Descrição
 
@@ -22,6 +52,35 @@ Criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consu
 - Rayane Amaro dos Santos - 2023010280
 
 ---
+
+---
+
+## Estrutura do Projeto
+
+
+```
+ProjetoIntegradoIV/
+├── 📁 .github/workflows/      # Configurações de CI/CD
+│   └── ci.yml               # Pipeline de integração contínua
+├── 📁 assets/                # Recursos estáticos (logo)
+├── 📁 pages/                 # Páginas HTML do sistema
+│   ├── 📁 dashboard/        # Painel administrativo
+│   ├── 📁 pacientes/        # Gestão de pacientes
+│   └── 📁 profissionalSaude/ # Gestão de profissionais
+├── 📁 scripts/               # Scripts JavaScript
+│   └── 📁 __tests__/       # Testes unitários
+├── 📁 styles/                # Folhas de estilo CSS
+├── 📄 .prettierignore        # Ignora arquivos da formatação Prettier
+├── 🔧 .prettierrc.json       # Regras de configuração do Prettier
+├── 🔧 eslint.config.js       # Regras de configuração do ESLint
+├── 📄 index.css              # Estilização da página principal
+├── 📄 index.html             # Página inicial do projeto
+├── 📄 LICENSE                # Licença do projeto
+├── 📄 package-lock.json      # Lockfile de dependências (gerado)
+├── 🔧 package.json           # Dependências e scripts do projeto
+└── 📖 README.md              # Documentação principal do projeto
+```
+
 
 ## EP1: Configuração da Integração Contínua (CI)
 
@@ -64,32 +123,6 @@ Para estudantes e novos programadores, adotar a CI desde cedo traz vários benef
 
 Em resumo, a CI automatiza a parte "chata" de verificar a qualidade do código, permitindo que você se concentre em aprender, criar novas funcionalidades e se tornar um desenvolvedor melhor.
 
----
-
-## Estrutura do Projeto
-
-```
-ProjetoIntegradoIV/
-├── 📁 .github/workflows/      # Configurações de CI/CD
-│   └── ci.yml               # Pipeline de integração contínua
-├── 📁 assets/                # Recursos estáticos (logo)
-├── 📁 pages/                 # Páginas HTML do sistema
-│   ├── 📁 dashboard/        # Painel administrativo
-│   ├── 📁 pacientes/        # Gestão de pacientes
-│   └── 📁 profissionalSaude/ # Gestão de profissionais
-├── 📁 scripts/               # Scripts JavaScript
-│   └── 📁 __tests__/       # Testes unitários
-├── 📁 styles/                # Folhas de estilo CSS
-├── 📄 .prettierignore        # Ignora arquivos da formatação Prettier
-├── 🔧 .prettierrc.json       # Regras de configuração do Prettier
-├── 🔧 eslint.config.js       # Regras de configuração do ESLint
-├── 📄 index.css              # Estilização da página principal
-├── 📄 index.html             # Página inicial do projeto
-├── 📄 LICENSE                # Licença do projeto
-├── 📄 package-lock.json      # Lockfile de dependências (gerado)
-├── 🔧 package.json           # Dependências e scripts do projeto
-└── 📖 README.md              # Documentação principal do projeto
-```
 
 ## Qualidade de Código e Testes
 
@@ -148,18 +181,27 @@ O projeto implementa testes unitários com **Jest** e **Testing Library**:
 - **Live Server**: Servidor local para desenvolvimento
 - **Visual Studio Code**: Editor de código com suporte a extensões
 
-## Entregável Parcial 2: Desenvolvimento da API RESTful
-
-Esta seção detalha o cumprimento do **Entregável Parcial 2**. Aqui, construímos o backend e a API RESTful para gerenciar os dados da aplicação.
+## EP 2: Desenvolvimento da API RESTful
 
 
-## Como executar o backend localmente
+### API de Gestão de Pacientes
+Esta é uma API RESTful para gerenciar registros de pacientes, permitindo operações de criação, leitura, atualização e exclusão (CRUD).
 
+#### Executando Localmente
+Siga os passos abaixo para configurar e executar a API em seu ambiente de desenvolvimento.
+
+**Pré-requisitos**
+- Node.js (versão 20.x ou superior)
+- NPM (geralmente instalado com o Node.js)
+- Git
+- Um banco de dados PostgreSQL em execução.
+
+**Passos para Instalação**
 1. Clone o repositório:
    ```bash
    git clone https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git
    ```
-2. Acesse o diretório do backend:
+2. Navegue até o diretório do backend:
    ```bash
    cd ProjetoIntegradoIV/backend
    ```
@@ -167,23 +209,106 @@ Esta seção detalha o cumprimento do **Entregável Parcial 2**. Aqui, construí
    ```bash
    npm install
    ```
-4. Configure a variável de ambiente no arquivo `.env`:
-   ```env
-   DATABASE_URL="postgresql://neondb_owner:npg_NDROVh7C1vMq@ep-flat-dew-acyjf21f-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-   ```
-5. Execute as migrações do banco de dados:
+4. Configure as variáveis de ambiente:
+   - Renomeie o arquivo `.env.example` para `.env`.
+   - Abra o arquivo `.env` e insira a URL de conexão do seu banco de dados PostgreSQL. Exemplo:
+     ```env
+     DATABASE_URL="postgresql://user:password@localhost:5432/mydatabase"
+     ```
+5. Aplique as migrações do banco de dados:
    ```bash
    npx prisma migrate dev
    ```
-6. Inicie o servidor:
+6. Inicie o servidor de desenvolvimento:
    ```bash
    npm run dev
    ```
-O backend estará disponível em `http://localhost:3333`.
+O servidor estará em execução em `http://localhost:3333`.
 
-## Como testar a API
+#### Documentação da API (Swagger)
+A documentação completa da API, incluindo todos os endpoints, parâmetros e schemas, está disponível via Swagger UI.
 
-Você pode testar os endpoints usando ferramentas como Postman, Insomnia ou `curl`.
+- **URL da Documentação:** [http://localhost:3333/api-docs](http://localhost:3333/api-docs)
+
+Acesse este link em seu navegador enquanto o servidor estiver em execução para explorar e interagir com a API.
+
+#### Testando a API
+Você pode usar ferramentas como Postman, Insomnia ou `curl` para testar os endpoints.
+
+##### Exemplos de Requisições
+1. **Criar um novo paciente**
+   - Endpoint: `POST /pacientes`
+   - Headers: `Content-Type: application/json`
+   - Body (Exemplo):
+     ```json
+     {
+       "nome": "Maria Oliveira",
+       "cpf": "987.654.321-01",
+       "idade": 35,
+       "email": "maria.oliveira@example.com",
+       "telefone": "(21) 91234-5678",
+       "endereco": "Avenida Principal, 456"
+     }
+     ```
+   - Resposta (201 Created):
+     ```json
+     {
+       "id": "clxyz...",
+       "nome": "Maria Oliveira",
+       "cpf": "987.654.321-01",
+       "idade": 35,
+       "email": "maria.oliveira@example.com",
+       "telefone": "(21) 91234-5678",
+       "endereco": "Avenida Principal, 456",
+       "createdAt": "2025-08-31T10:00:00.000Z",
+       "updatedAt": "2025-08-31T10:00:00.000Z"
+     }
+     ```
+2. **Listar todos os pacientes**
+   - Endpoint: `GET /pacientes/list`
+   - Resposta (200 OK):
+     ```json
+     [
+       {
+         "id": "clxyz...",
+         "nome": "Maria Oliveira",
+         "cpf": "987.654.321-01",
+         "idade": 35,
+         "email": "maria.oliveira@example.com",
+         "telefone": "(21) 91234-5678",
+         "endereco": "Avenida Principal, 456",
+         "createdAt": "2025-08-31T10:00:00.000Z",
+         "updatedAt": "2025-08-31T10:00:00.000Z"
+       }
+     ]
+     ```
+
+#### Possíveis Usos da Nossa API (Componente Extensionista)
+Esta API é mais do que um conjunto de endpoints; é uma ferramenta fundamental projetada para resolver problemas reais no ecossistema de saúde, com um forte potencial para impacto social e inovação. Abaixo, detalhamos como diferentes atores podem se beneficiar desta solução.
+
+1. **Modernização de Pequenas Clínicas e Consultórios Locais**
+   - O Problema: Muitas clínicas em comunidades locais ainda dependem de arquivos em papel ou planilhas desorganizadas. Esse método é ineficiente, propenso a erros de legibilidade, perda de dados e dificulta o acesso rápido ao histórico do paciente durante uma emergência.
+   - Nossa Solução como Ferramenta de Impacto: A API oferece a espinha dorsal para um sistema de prontuário eletrônico simples e de baixo custo. Uma interface (frontend) pode ser desenvolvida por estudantes ou voluntários da comunidade para interagir com a API, permitindo que médicos e recepcionistas:
+     - Digitalizem o cadastro de pacientes de forma segura e padronizada.
+     - Acessem históricos médicos completos em segundos.
+     - Reduzam o tempo gasto em tarefas administrativas, dedicando mais atenção ao cuidado do paciente.
+   - Impacto Extensionista: Ao capacitar pequenas clínicas, o projeto melhora diretamente a qualidade do atendimento de saúde na comunidade, diminui riscos associados a informações incorretas e serve como um estudo de caso sobre os benefícios da transformação digital na saúde local.
+
+2. **Acelerador para Inovação e Empreendedorismo em Saúde (Health Tech)**
+   - O Desafio: Para startups e desenvolvedores independentes, criar uma infraestrutura de backend segura e em conformidade com as regulações de dados de saúde é uma barreira significativa, que consome tempo e recursos preciosos.
+   - Nossa Solução como Plataforma: A API funciona como um "Backend-as-a-Service" (BaaS) para a gestão de pacientes. Em vez de construir essa base do zero, inovadores podem consumir nossa API e focar no que realmente agrega valor: a experiência do usuário e a criação de soluções inovadoras.
+   - Impacto Extensionista: O projeto se torna um catalisador para o ecossistema de inovação local. Ele pode ser usado em hackathons, disciplinas de empreendedorismo ou por startups em incubadoras para:
+     - Desenvolver aplicativos de telemedicina.
+     - Criar plataformas para agendamento online de consultas e exames.
+     - Construir soluções de monitoramento de pacientes crônicos, onde os dados são enviados para a API e acompanhados por profissionais de saúde.
+
+3. **Ferramenta para Projetos de Saúde Pública e Comunitária**
+   - O Cenário: Agentes comunitários de saúde e ONGs realizam um trabalho vital, como campanhas de vacinação, acompanhamento de gestantes e monitoramento de endemias. Frequentemente, a coleta de dados é feita em papel, dificultando a análise e a gestão em larga escala.
+   - Nossa Solução em Campo: A API pode ser o backend de um aplicativo móvel simples, que funcione até mesmo offline e sincronize os dados quando houver conexão. Com isso, agentes de saúde podem:
+     - Registrar visitas e informações de saúde diretamente no celular ou tablet.
+     - Identificar famílias que precisam de acompanhamento.
+     - Gerar dados georreferenciados para mapas de calor de incidência de doenças.
+   - Impacto Extensionista: Fortalece as ações de saúde pública, permitindo que gestores tomem decisões baseadas em dados atualizados e precisos. Melhora a eficiência das campanhas, otimiza a alocação de recursos e cria um registro histórico valioso para estudos epidemiológicos futuros na comunidade.
 
 ### Criar paciente (POST /pacientes)
 ```bash
@@ -268,11 +393,6 @@ curl -X DELETE http://localhost:3333/pacientes/ckxyz...
 ```
 **Resposta:**
 Status 204 (No Content)
-
-## Documentação
-
-Consulte a documentação detalhada dos endpoints e exemplos no arquivo [`backend/README.md`](./backend/README.md).
-
 ---
 
 ## Possíveis usos da nossa API
