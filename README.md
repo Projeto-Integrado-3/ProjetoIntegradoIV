@@ -22,6 +22,7 @@
 - [Qualidade de Código e Testes](#qualidade-de-código-e-testes)
 - [Funcionalidades Principais](#funcionalidades-principais)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Como executar o frontend localmente](#como-executar-o-frontend-localmente)
 - [EP 2: Desenvolvimento da API RESTful](#ep-2-desenvolvimento-da-api-restful)
 - [Como executar o backend localmente](#como-executar-o-backend-localmente)
 - [Como testar a API](#como-testar-a-api)
@@ -201,13 +202,25 @@ O projeto implementa testes unitários com **Jest** e **Testing Library**:
 - **Live Server**: Servidor local para desenvolvimento
 - **Visual Studio Code**: Editor de código com suporte a extensões
 
-## EP 2: Desenvolvimento da API RESTful
+##Executando o Frontend
+
+1.  Clone o repositório:
+    ```bash
+    git clone [https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV.git]
+    ```
+2.  Abra o projeto em seu editor de código ou IDE preferido (ex.: Visual Studio Code).
+3.  Configure o Live Server para visualizar o projeto localmente:
+    - Certifique-se de que a extensão Live Server está instalada no Visual Studio Code.
+    - Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+
+
+## EP2: Desenvolvimento da API RESTful
 
 
 ### API de Gestão de Pacientes
 Esta é uma API RESTful para gerenciar registros de pacientes, permitindo operações de criação, leitura, atualização e exclusão (CRUD).
 
-#### Executando Localmente
+#### Executando Backend
 Siga os passos abaixo para configurar e executar a API em seu ambiente de desenvolvimento.
 
 **Pré-requisitos**
