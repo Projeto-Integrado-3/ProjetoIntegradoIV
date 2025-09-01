@@ -22,9 +22,9 @@
 - [Qualidade de Código e Testes](#qualidade-de-código-e-testes)
 - [Funcionalidades Principais](#funcionalidades-principais)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como executar o frontend localmente](#como-executar-o-frontend-localmente)
+- [Como executar o frontend](#como-executar-o-frontend-localmente)
 - [EP 2: Desenvolvimento da API RESTful](#ep-2-desenvolvimento-da-api-restful)
-- [Como executar o backend localmente](#como-executar-o-backend-localmente)
+- [Como executar o backend](#como-executar-o-backend-localmente)
 - [Como testar a API](#como-testar-a-api)
 - [Documentação](#documentação)
 - [Possíveis usos da nossa API](#possíveis-usos-da-nossa-api)
@@ -202,7 +202,7 @@ O projeto implementa testes unitários com **Jest** e **Testing Library**:
 - **Live Server**: Servidor local para desenvolvimento
 - **Visual Studio Code**: Editor de código com suporte a extensões
 
-##Executando o Frontend
+## Executando o Frontend
 
 1.  Clone o repositório:
     ```bash
