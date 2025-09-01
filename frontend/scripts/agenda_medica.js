@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
   document
-    .querySelector('nav a[href="/frontend/pages/pacientes/litarPacientes.html"]')
+    .querySelector(
+      'nav a[href="/frontend/pages/pacientes/litarPacientes.html"]'
+    )
     .addEventListener('click', function (event) {
       event.preventDefault();
       window.location.href = '/frontend/pages/pacientes/litarPacientes.html';
@@ -34,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     )
     .addEventListener('click', function (event) {
       event.preventDefault();
-      window.location.href = '/frontend/pages/profissionalSaude/listarProfissional.html';
+      window.location.href =
+        '/frontend/pages/profissionalSaude/listarProfissional.html';
     });
 
   document
