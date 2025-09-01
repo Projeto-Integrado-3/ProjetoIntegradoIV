@@ -62,22 +62,42 @@ Criar uma plataforma eficiente e intuitiva para facilitar o agendamento de consu
 ProjetoIntegradoIV/
 ├── 📁 .github/workflows/      # Configurações de CI/CD
 │   └── ci.yml               # Pipeline de integração contínua
-├── 📁 assets/                # Recursos estáticos (logo)
-├── 📁 pages/                 # Páginas HTML do sistema
-│   ├── 📁 dashboard/        # Painel administrativo
-│   ├── 📁 pacientes/        # Gestão de pacientes
-│   └── 📁 profissionalSaude/ # Gestão de profissionais
-├── 📁 scripts/               # Scripts JavaScript
-│   └── 📁 __tests__/       # Testes unitários
-├── 📁 styles/                # Folhas de estilo CSS
-├── 📄 .prettierignore        # Ignora arquivos da formatação Prettier
-├── 🔧 .prettierrc.json       # Regras de configuração do Prettier
-├── 🔧 eslint.config.js       # Regras de configuração do ESLint
-├── 📄 index.css              # Estilização da página principal
-├── 📄 index.html             # Página inicial do projeto
+├── 📁 backend/               # API Backend (Node.js + Express + Prisma)
+│   ├── 📁 prisma/           # Configurações do banco de dados
+│   │   ├── 📁 migrations/   # Histórico de migrações do BD
+│   │   └── schema.prisma    # Schema do banco de dados
+│   ├── 📁 src/              # Código fonte do backend
+│   │   ├── 📁 controllers/  # Controladores da API
+│   │   │   └── 📁 paciente/ # Controllers de pacientes
+│   │   ├── 📁 services/     # Lógica de negócio
+│   │   │   └── 📁 pacientes/ # Services de pacientes
+│   │   ├── 📁 prisma/       # Configuração do Prisma Client
+│   │   ├── routes.js        # Definição das rotas da API
+│   │   ├── server.js        # Servidor Express
+│   │   └── swaggerConfig.js # Configuração da documentação
+│   ├── .env.exemple         # Exemplo de variáveis de ambiente
+│   ├── .gitignore           # Arquivos ignorados pelo Git
+│   ├── package.json         # Dependências do backend
+│   └── package-lock.json    # Lockfile do backend
+├── 📁 frontend/              # Interface do usuário (HTML/CSS/JS)
+│   ├── 📁 assets/           # Recursos estáticos (logo)
+│   ├── 📁 pages/            # Páginas HTML do sistema
+│   │   ├── 📁 dashboard/    # Painel administrativo
+│   │   ├── 📁 pacientes/    # Gestão de pacientes
+│   │   └── 📁 profissionalSaude/ # Gestão de profissionais
+│   ├── 📁 scripts/          # Scripts JavaScript
+│   │   └── 📁 __tests__/   # Testes unitários
+│   ├── 📁 styles/           # Folhas de estilo CSS
+│   ├── .prettierignore     # Ignora arquivos da formatação Prettier
+│   ├── .prettierrc.json    # Regras de configuração do Prettier
+│   ├── eslint.config.js    # Regras de configuração do ESLint
+│   ├── index.css           # Estilização da página principal
+│   ├── index.html          # Página inicial do projeto
+│   ├── package.json        # Dependências do frontend
+│   └── package-lock.json   # Lockfile do frontend
+├── 📄 .gitignore             # Arquivos ignorados pelo Git (raiz)
 ├── 📄 LICENSE                # Licença do projeto
-├── 📄 package-lock.json      # Lockfile de dependências (gerado)
-├── 🔧 package.json           # Dependências e scripts do projeto
+├── � package-lock.json      # Lockfile de dependências (raiz)
 └── 📖 README.md              # Documentação principal do projeto
 ```
 
