@@ -2,12 +2,11 @@
 
 ![Status da CI](https://github.com/Projeto-Integrado-3/ProjetoIntegradoIV/actions/workflows/ci.yml/badge.svg)
 ![Node.js](https://img.shields.io/badge/node.js-20.x-green)
-![ESLint](https://img.shields.io/badge/ESLint-passing-brightgreen)
+![ESLint](https://img.shields.io/badge/ESLint-Code%20Linter-blueviolet)
 ![Jest](https://img.shields.io/badge/Tests-Jest-green)
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-blue)](https://www.prisma.io/)
 [![Express](https://img.shields.io/badge/Express.js-Backend-lightgrey)](https://expressjs.com/)
 [![Swagger](https://img.shields.io/badge/Swagger-API%20Docs-yellowgreen)](https://swagger.io/)
-[![Docker](https://img.shields.io/badge/Docker-Containerization-blue)](https://www.docker.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)](https://www.postgresql.org/)
 
 [//]: # (Sumário)
