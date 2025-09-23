@@ -752,3 +752,102 @@ Este projeto está sob a licença MIT. Consulte o arquivo MIT License para mais 
 - Tela de Gerenciamento de Exames
 
 ![Captura de tela de 2025-05-01 17-33-06](https://github.com/user-attachments/assets/11628846-d319-41aa-8181-08e9ecfbb3e8)
+
+## Solução de Problemas (Troubleshooting)
+
+### Erro ao Executar Testes: "O nome do banco deve terminar com '_test'!"
+
+#### 🚨 O Problema
+Se você encontrar este erro ao executar `npm test`:
+
+```
+🚨 ERRO: O nome do banco deve terminar com "_test"!
+🔍 Banco atual: testdb
+🔍 URL completa: postgresql://localhost:5432/testdb
+```
+
+Isso ocorre devido a um **conflito de variável de ambiente**:
+
+1. **Verificação de Segurança**: O arquivo `backend/__tests__/setup.js` contém uma verificação que garante que o nome do banco de dados de teste termine com `_test`. Esta é uma medida de segurança para evitar que os testes apaguem dados de desenvolvimento ou produção por acidente.
+
+2. **Variável de Ambiente Conflitante**: A variável `DATABASE_URL` está definida em seu ambiente de execução e tem prioridade sobre o arquivo `.env.test`.
+
+#### ✅ Soluções
+
+**Opção 1: Limpar a Variável de Ambiente (Recomendado)**
+
+Antes de executar `npm test`, limpe a variável `DATABASE_URL`:
+
+```bash
+# Linux ou macOS
+unset DATABASE_URL
+npm test
+```
+
+```cmd
+# Windows (Command Prompt)
+set DATABASE_URL=
+npm test
+```
+
+```powershell
+# Windows (PowerShell)
+Remove-Item Env:DATABASE_URL
+npm test
+```
+
+**Opção 2: Definir uma Variável de Ambiente Válida**
+
+Se você precisa manter a variável `DATABASE_URL` por outro motivo, defina-a para um banco de teste válido:
+
+```bash
+# Linux ou macOS
+export DATABASE_URL="postgresql://postgres:password@localhost/testdb_test?sslmode=disable"
+npm test
+```
+
+```cmd
+# Windows (Command Prompt)
+set DATABASE_URL="postgresql://postgres:password@localhost/testdb_test?sslmode=disable"
+npm test
+```
+
+#### 🔍 Como Verificar
+Para verificar se o problema foi resolvido, você pode usar o script de verificação de ambiente:
+
+```bash
+cd backend
+npm run check-test-env
+# ou diretamente:
+# node check-test-env.js
+```
+
+Este script irá:
+- Verificar se a variável `DATABASE_URL` está definida
+- Validar se o nome do banco termina com `_test`
+- Mostrar a configuração do arquivo `.env.test`
+- Fornecer recomendações específicas
+
+Após resolver o problema, execute os testes:
+```bash
+cd backend
+npm test
+```
+
+Os testes devem iniciar normalmente sem a mensagem de erro sobre o nome do banco de dados.
+
+### Outros Problemas Comuns
+
+#### Erro: "Cannot find module '@prisma/client'"
+Execute:
+```bash
+cd backend
+npm install
+npx prisma generate
+```
+
+#### Erro de Conexão com o Banco de Dados
+Certifique-se de que:
+1. O PostgreSQL está em execução
+2. As credenciais no `.env.test` estão corretas
+3. O banco de dados de teste existe
