@@ -10,6 +10,17 @@ jobs:
   backend:
     runs-on: ubuntu-latest
     name: Backend Tests
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: testdb
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd="pg_isready -U postgres" --health-interval=10s --health-timeout=5s --health-retries=5
 
     defaults:
       run:
@@ -27,6 +38,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..10}; do
+            nc -z localhost 5432 && break
+            sleep 2
+          done
+          nc -z localhost 5432
+
+      - name: Set DATABASE_URL
+        run: echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/testdb" >> $GITHUB_ENV
+
+      - name: Run Prisma Migrate
+        run: npx prisma migrate deploy
 
       - name: Run tests
         run: npm test
