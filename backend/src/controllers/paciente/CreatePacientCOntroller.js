@@ -16,7 +16,7 @@ class CreatePacienteController {
       });
       return res.status(201).json(paciente);
     } catch (error) {
-        if (error.message === 'Paciente já existe') {
+        if (error.message === 'Paciente já existe' || error.message === 'CPF é obrigatório') {
             return res.status(400).json({ error: error.message });
         }
       console.error(error);

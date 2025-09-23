@@ -5,6 +5,11 @@ class CreatePacienteService {
   async execute(data) {
     const { nome, cpf, idade, email, telefone, endereco } = data;
 
+    // Validar se CPF foi fornecido
+    if (!cpf) {
+      throw new Error('CPF é obrigatório');
+    }
+
     const pacienteExistente = await prismaClient.paciente.findUnique({
       where: { cpf }
     });
