@@ -13,8 +13,20 @@ if (process.env.NODE_ENV !== 'test') {
   process.exit(1);
 }
 
-// Carregar explicitamente o arquivo .env.test
-config({ path: join(__dirname, '../.env.test'), override: true });
+// Configurar DATABASE_URL baseado no ambiente
+if (process.env.GITHUB_ACTIONS) {
+  // GitHub Actions: usar localhost (será sobrescrito pelo workflow)
+  if (!process.env.DATABASE_URL || !process.env.DATABASE_URL.includes('localhost')) {
+    process.env.DATABASE_URL = 'postgresql://postgres:password@localhost:5432/heliumdb_test';
+  }
+} else {
+  // Replit local: carregar .env.test e sobrescrever se necessário
+  config({ path: join(__dirname, '../.env.test') });
+  // Forçar a URL do teste no Replit se não foi definida corretamente
+  if (!process.env.DATABASE_URL || !process.env.DATABASE_URL.includes('heliumdb_test')) {
+    process.env.DATABASE_URL = 'postgresql://postgres:password@helium/heliumdb_test?sslmode=disable';
+  }
+}
 
 // Verificar se DATABASE_URL aponta especificamente para um banco de teste
 try {
