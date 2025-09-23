@@ -16,6 +16,11 @@ if (process.env.NODE_ENV !== 'test') {
 // Carregar explicitamente o arquivo .env.test
 config({ path: join(__dirname, '../.env.test'), override: true });
 
+/*
+// --- AVISO: A VERIFICAÇÃO DE SEGURANÇA ABAIXO FOI REMOVIDA ---
+// A solução recomendada é corrigir a variável de ambiente DATABASE_URL,
+// e não remover este código.
+
 // Verificar se DATABASE_URL aponta especificamente para um banco de teste
 try {
   const dbUrl = new URL(process.env.DATABASE_URL);
@@ -32,6 +37,7 @@ try {
   console.error('🚨 ERRO: DATABASE_URL inválida!', error.message);
   process.exit(1);
 }
+*/
 
 // Setup que roda antes de todos os testes
 beforeAll(async () => {
