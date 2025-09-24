@@ -1,6 +1,7 @@
 import { Router } from "express";
 import CreatePacienteController from './controllers/paciente/CreatePacientCOntroller.js';
 import ListPacientController from "./controllers/paciente/ListPacientController.js";
+import GetPacientByIdController from "./controllers/paciente/GetPacientByIdController.js";
 import UpdatePacienteController from "./controllers/paciente/UpdatePacienteController.js";
 import DeletePacientController from "./controllers/paciente/DeletePacientController.js";
 
@@ -75,6 +76,33 @@ const router = Router();
  *                 $ref: '#/components/schemas/Paciente'
  */
 router.get("/pacientes/list", new ListPacientController().handle);
+
+/**
+ * @swagger
+ * /pacientes/{id}:
+ *   get:
+ *     summary: Busca um paciente por ID
+ *     tags: [Pacientes]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: O ID do paciente
+ *     responses:
+ *       200:
+ *         description: Paciente encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Paciente'
+ *       404:
+ *         description: Paciente não encontrado
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get("/pacientes/:id", new GetPacientByIdController().handle);
 
 /**
  * @swagger

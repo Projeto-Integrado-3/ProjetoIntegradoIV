@@ -25,6 +25,7 @@
 - [Como executar o frontend](#executando-o-frontend)
 - [EP 2: Desenvolvimento da API RESTful](#ep2-desenvolvimento-da-api-restful)
 - [Como executar o backend](#executando-backend)
+- [EP3: Testes de Software](#ep3-testes-de-software)
 - [Uso](#uso)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
@@ -73,6 +74,9 @@ ProjetoIntegradoIV/
 │   │   ├── routes.js        # Definição das rotas da API
 │   │   ├── server.js        # Servidor Express
 │   │   └── swaggerConfig.js # Configuração da documentação
+│   ├── 📁 __tests__/        # Testes automatizados da API
+│   │   ├── app.test.js      # Testes de integração da API
+│   │   └── setup.js         # Configuração do ambiente de testes
 │   ├── .env.exemple         # Exemplo de variáveis de ambiente
 │   ├── .gitignore           # Arquivos ignorados pelo Git
 │   ├── package.json         # Dependências do backend
@@ -253,12 +257,12 @@ Siga os passos abaixo para configurar e executar a API em seu ambiente de desenv
    ```bash
    npm run dev
    ```
-O servidor estará em execução em `http://localhost:3333`.
+O servidor estará em execução em `http://localhost:3000`.
 
 #### Documentação da API (Swagger)
 A documentação completa da API, incluindo todos os endpoints, parâmetros e schemas, está disponível via Swagger UI.
 
-- **URL da Documentação:** [http://localhost:3333/api-docs](http://localhost:3333/api-docs)
+- **URL da Documentação:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 Acesse este link em seu navegador enquanto o servidor estiver em execução para explorar e interagir com a API.
 
@@ -272,26 +276,26 @@ Você pode usar ferramentas como Postman, Insomnia ou `curl` para testar os endp
    - Body (Exemplo):
      ```json
      {
-       "nome": "Maria Oliveira",
-       "cpf": "987.654.321-01",
+       "nome": "Maria Silva Santos",
+       "cpf": "123.456.789-01",
        "idade": 35,
-       "email": "maria.oliveira@example.com",
-       "telefone": "(21) 91234-5678",
-       "endereco": "Avenida Principal, 456"
+       "email": "maria.santos@email.com",
+       "telefone": "(11) 98765-4321",
+       "endereco": "Rua das Flores, 123, Centro, São Paulo - SP"
      }
      ```
    - Resposta (201 Created):
      ```json
      {
        "id": "clxyz...",
-       "nome": "Maria Oliveira",
-       "cpf": "987.654.321-01",
+       "nome": "Maria Silva Santos",
+       "cpf": "123.456.789-01",
        "idade": 35,
-       "email": "maria.oliveira@example.com",
-       "telefone": "(21) 91234-5678",
-       "endereco": "Avenida Principal, 456",
-       "createdAt": "2025-08-31T10:00:00.000Z",
-       "updatedAt": "2025-08-31T10:00:00.000Z"
+       "email": "maria.santos@email.com",
+       "telefone": "(11) 98765-4321",
+       "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+       "createdAt": "2025-09-23T00:42:48.646Z",
+       "updatedAt": "2025-09-23T00:42:48.646Z"
      }
      ```
 2. **Listar todos os pacientes**
@@ -301,16 +305,60 @@ Você pode usar ferramentas como Postman, Insomnia ou `curl` para testar os endp
      [
        {
          "id": "clxyz...",
-         "nome": "Maria Oliveira",
-         "cpf": "987.654.321-01",
+         "nome": "Maria Silva Santos",
+         "cpf": "123.456.789-01",
          "idade": 35,
-         "email": "maria.oliveira@example.com",
-         "telefone": "(21) 91234-5678",
-         "endereco": "Avenida Principal, 456",
-         "createdAt": "2025-08-31T10:00:00.000Z",
-         "updatedAt": "2025-08-31T10:00:00.000Z"
+         "email": "maria.santos@email.com",
+         "telefone": "(11) 98765-4321",
+         "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+         "createdAt": "2025-09-23T00:42:48.646Z",
+         "updatedAt": "2025-09-23T00:42:48.646Z"
        }
      ]
+     ```
+3. **Buscar paciente por ID**
+   - Endpoint: `GET /pacientes/{id}`
+   - Resposta (200 OK):
+     ```json
+     {
+       "id": "clxyz...",
+       "nome": "Maria Silva Santos",
+       "cpf": "123.456.789-01",
+       "idade": 35,
+       "email": "maria.santos@email.com",
+       "telefone": "(11) 98765-4321",
+       "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+       "createdAt": "2025-09-23T00:42:48.646Z",
+       "updatedAt": "2025-09-23T00:42:48.646Z"
+     }
+     ```
+4. **Atualizar paciente**
+   - Endpoint: `PUT /pacientes/{id}`
+   - Headers: `Content-Type: application/json`
+   - Body (Exemplo):
+     ```json
+     {
+       "nome": "Ana Souza Silva",
+       "cpf": "123.456.789-01",
+       "idade": 35,
+       "email": "maria.santos@email.com",
+       "telefone": "(11) 98765-4321",
+       "endereco": "Rua das Flores, 123, Centro, São Paulo - SP"
+     }
+     ```
+   - Resposta (200 OK):
+     ```json
+     {
+       "id": "clxyz...",
+       "nome": "Ana Souza Silva",
+       "cpf": "123.456.789-01",
+       "idade": 35,
+       "email": "maria.santos@email.com",
+       "telefone": "(11) 98765-4321",
+       "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+       "createdAt": "2025-09-23T00:42:48.646Z",
+       "updatedAt": "2025-09-23T00:43:10.378Z"
+     }
      ```
 
 #### Possíveis Usos da Nossa API (Componente Extensionista)
@@ -342,84 +390,84 @@ Esta API é mais do que um conjunto de endpoints; é uma ferramenta fundamental 
 
 ### Criar paciente (POST /pacientes)
 ```bash
-curl -X POST http://localhost:3333/pacientes \
+curl -X POST http://localhost:3000/pacientes \
   -H "Content-Type: application/json" \
   -d '{
-    "nome": "Maria Silva",
-    "cpf": "12345678900",
-    "idade": 28,
-    "email": "maria@exemplo.com",
-    "telefone": "11999999999",
-    "endereco": "Rua das Flores, 100"
+    "nome": "Maria Silva Santos",
+    "cpf": "123.456.789-01",
+    "idade": 35,
+    "email": "maria.santos@email.com",
+    "telefone": "(11) 98765-4321",
+    "endereco": "Rua das Flores, 123, Centro, São Paulo - SP"
   }'
 ```
 **Resposta:**
 ```json
 {
-  "id": "ckxyz...",
-  "nome": "Maria Silva",
-  "cpf": "12345678900",
-  "idade": 28,
-  "email": "maria@exemplo.com",
-  "telefone": "11999999999",
-  "endereco": "Rua das Flores, 100",
-  "createdAt": "2025-08-18T23:00:00.000Z",
-  "updatedAt": "2025-08-18T23:00:00.000Z"
+  "id": "cmfvtznb90000o3xomc86takh",
+  "nome": "Maria Silva Santos",
+  "cpf": "123.456.789-01",
+  "idade": 35,
+  "email": "maria.santos@email.com",
+  "telefone": "(11) 98765-4321",
+  "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+  "createdAt": "2025-09-23T00:42:48.646Z",
+  "updatedAt": "2025-09-23T00:42:48.646Z"
 }
 ```
 
 ### Atualizar paciente (PUT /pacientes/:id)
 ```bash
-curl -X PUT http://localhost:3333/pacientes/ckxyz... \
+curl -X PUT http://localhost:3000/pacientes/cmfvtznb90000o3xomc86takh \
   -H "Content-Type: application/json" \
   -d '{
-    "nome": "Maria Silva",
-    "cpf": "12345678900",
-    "idade": 29,
-    "email": "maria@exemplo.com",
-    "telefone": "11999999999",
-    "endereco": "Rua das Flores, 100"
+    "nome": "Ana Souza Silva",
+    "cpf": "123.456.789-01",
+    "idade": 35,
+    "email": "maria.santos@email.com",
+    "telefone": "(11) 98765-4321",
+    "endereco": "Rua das Flores, 123, Centro, São Paulo - SP"
   }'
 ```
 **Resposta:**
 ```json
 {
-  "id": "ckxyz...",
-  "nome": "Maria Silva",
-  "cpf": "12345678900",
-  "idade": 29,
-  "email": "maria@exemplo.com",
-  "telefone": "11999999999",
-  "endereco": "Rua das Flores, 100",
-  "createdAt": "2025-08-18T23:00:00.000Z",
-  "updatedAt": "2025-08-18T23:10:00.000Z"
+  "id": "cmfvtznb90000o3xomc86takh",
+  "nome": "Ana Souza Silva",
+  "cpf": "123.456.789-01",
+  "idade": 35,
+  "email": "maria.santos@email.com",
+  "telefone": "(11) 98765-4321",
+  "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+  "createdAt": "2025-09-23T00:42:48.646Z",
+  "updatedAt": "2025-09-23T00:43:10.378Z"
 }
 ```
 
 ### Listar pacientes (GET /pacientes/list)
 ```bash
-curl http://localhost:3333/pacientes/list
+curl http://localhost:3000/pacientes/list
 ```
 **Resposta:**
 ```json
 [
   {
-    "id": "ckxyz...",
-    "nome": "Maria Silva",
-    "cpf": "12345678900",
-    "idade": 29,
-    "email": "maria@exemplo.com",
-    "telefone": "11999999999",
-    "endereco": "Rua das Flores, 100",
-    "createdAt": "2025-08-18T23:00:00.000Z",
-    "updatedAt": "2025-08-18T23:10:00.000Z"
+    "id": "cmfvtznb90000o3xomc86takh",
+    "nome": "Ana Souza Silva",
+    "cpf": "123.456.789-01",
+    "idade": 35,
+    "email": "maria.santos@email.com",
+    "telefone": "(11) 98765-4321",
+    "endereco": "Rua das Flores, 123, Centro, São Paulo - SP",
+    "createdAt": "2025-09-23T00:42:48.646Z",
+    "updatedAt": "2025-09-23T00:43:10.378Z"
   }
 ]
 ```
 
 ### Deletar paciente (DELETE /pacientes/:id)
 ```bash
-curl -X DELETE http://localhost:3333/pacientes/ckxyz...
+curl -X DELETE http://localhost:3000/pacientes/cmfvtznb90000o3xomc86takh
 ```
 **Resposta:**
 Status 204 (No Content)
@@ -435,6 +483,190 @@ Esta API pode ser utilizada por clínicas, consultórios médicos, hospitais ou 
 - Profissionais autônomos podem usar a API para organizar seus agendamentos e manter os dados dos pacientes sempre atualizados, melhorando o atendimento e a experiência do paciente.
 
 Ao conectar o projeto a problemas reais, incentivamos o uso da tecnologia para tornar processos de saúde mais eficientes, acessíveis e organizados.
+
+## EP3: Testes de Software
+
+Esta seção detalha o cumprimento do **Entregável Parcial 3**, que demonstra nossa implementação robusta de testes automatizados para garantir a qualidade e confiabilidade da API de gestão de pacientes.
+
+### Objetivo dos Testes
+
+O sistema de testes implementado tem como objetivos principais:
+
+1. **Garantir a funcionalidade correta** de todos os endpoints da API
+2. **Validar cenários de erro** e tratamento de exceções
+3. **Assegurar a integridade dos dados** no banco de dados
+4. **Facilitar a manutenção** e evolução do código
+5. **Aumentar a confiança** nas alterações e deployments
+
+### Estrutura de Testes
+
+#### Configuração do Ambiente de Teste
+
+Os testes utilizam um **ambiente isolado** com as seguintes características:
+
+- **Banco de dados dedicado**: Separado da produção
+- **Configuração de ambiente**: Arquivo `.env.test` específico
+- **Limpeza automática**: Dados são limpos antes/depois dos testes
+- **Segurança**: Validações impedem execução em ambiente de produção
+
+```javascript
+// Arquivo: backend/__tests__/setup.js
+// Configuração que garante isolamento e segurança dos testes
+beforeAll(async () => {
+  console.log('🧪 Iniciando ambiente de teste isolado...');
+  await prismaClient.paciente.deleteMany();
+});
+```
+
+#### Framework e Ferramentas
+
+- **Jest**: Framework de testes principal
+- **Supertest**: Testes de integração HTTP/API
+- **Prisma Client**: Interação com banco de dados de teste
+- **Cross-env**: Gerenciamento de variáveis de ambiente
+
+### Casos de Teste Implementados
+
+#### 1. Testes de Criação de Pacientes (POST /pacientes)
+
+- **CT-POST-01**: Criação com dados válidos 
+- **CT-POST-02**: Validação de CPF duplicado 
+- **CT-POST-03**: Validação de campos obrigatórios 
+- **CT-POST-04**: Validação de formato dos dados 
+
+#### 2. Testes de Listagem (GET /pacientes/list)
+
+- **CT-GET-01**: Listagem de todos os pacientes 
+- **CT-GET-02**: Retorno de array vazio quando não há dados 
+
+#### 3. Testes de Busca por ID (GET /pacientes/:id)
+
+- **CT-GET-03**: Busca por ID válido 
+- **CT-GET-04**: Erro 404 para ID inexistente 
+
+#### 4. Testes de Atualização (PUT /pacientes/:id)
+
+- **CT-PUT-01**: Atualização com dados válidos 
+- **CT-PUT-02**: Erro 404 para paciente inexistente 
+
+#### 5. Testes de Exclusão (DELETE /pacientes/:id)
+
+- **CT-DELETE-01**: Exclusão de paciente existente 
+- **CT-DELETE-02**: Erro 404 para paciente inexistente 
+
+#### 6. Testes de Integração
+
+- **Fluxo CRUD Completo**: Teste que executa todas as operações em sequência 
+
+### Executando os Testes
+
+#### Comando de Execução
+
+```bash
+# Navegar para o diretório do backend
+cd backend
+
+# Executar todos os testes
+npm test
+
+# Executar testes em modo watch (desenvolvimento)
+npm run test:watch
+
+# Executar testes com coverage
+npm run test:coverage
+```
+
+#### Resultado Esperado
+
+```
+✓ CT-POST-01: Deve criar um paciente com dados válidos
+✓ CT-POST-02: Deve retornar erro ao tentar criar paciente com CPF duplicado
+✓ CT-GET-01: Deve listar todos os pacientes
+✓ CT-GET-03: Deve buscar paciente por ID válido
+✓ CT-PUT-01: Deve atualizar paciente com dados válidos
+✓ CT-DELETE-01: Deve deletar paciente existente
+✓ Deve executar fluxo completo CRUD de paciente
+
+Test Suites: 1 passed, 1 total
+Tests: 13 passed, 13 total
+```
+
+### Cobertura de Testes
+
+Os testes cobrem:
+
+- **100% dos endpoints** da API de pacientes
+- **Cenários positivos** (happy path)
+- **Cenários negativos** (validações e erros)
+- **Integração** completa do sistema
+- **Persistência** de dados no banco
+
+### Casos de Teste Manuais
+
+Além dos testes automatizados, também definimos casos de teste manuais detalhados para cada endpoint da API:
+
+#### CT-POST-01: Criar paciente com sucesso
+
+- **Cenário**: Criar um novo paciente com todos os dados válidos e CPF único
+- **Entrada**: JSON com nome, CPF, idade, email, telefone e endereço
+- **Resultado Esperado**: Status 201, objeto JSON do paciente criado
+- **Critérios de Aceitação**: ID gerado automaticamente, todos os campos corretos, persistência no banco
+
+#### CT-POST-02: Tentar criar paciente com CPF duplicado
+
+- **Cenário**: Tentar criar um paciente com CPF já existente
+- **Resultado Esperado**: Status 400, mensagem "Paciente já existe"
+
+#### CT-GET-01: Listar todos os pacientes
+
+- **Cenário**: Consultar a lista de pacientes
+- **Resultado Esperado**: Status 200, array JSON de pacientes
+
+#### CT-PUT-01: Atualizar paciente com sucesso
+
+- **Cenário**: Atualizar dados de um paciente existente
+- **Resultado Esperado**: Status 200, objeto JSON com dados atualizados
+- **Critérios de Aceitação**: Campo updatedAt atualizado, persistência das alterações
+
+#### CT-GET-02: Buscar paciente por ID inexistente
+
+- **Cenário**: Buscar um paciente com ID que não existe
+- **Resultado Esperado**: Status 404, mensagem "Paciente não encontrado"
+
+#### CT-DELETE-01: Deletar paciente existente
+
+- **Cenário**: Deletar um paciente válido
+- **Resultado Esperado**: Status 200 ou 204
+
+### [Componente Extensionista] A Importância dos Testes de Software na Sociedade
+
+Os testes de software são fundamentais para garantir a qualidade de sistemas que impactam diretamente a vida das pessoas. No contexto de sistemas de saúde, como o nosso sistema de agendamento, a importância se torna ainda mais crítica:
+
+#### Impacto na Qualidade de Vida
+
+1. **Segurança dos Dados de Saúde**: Testes rigorosos garantem que informações sensíveis de pacientes sejam tratadas corretamente, evitando vazamentos ou corrupção de dados médicos.
+
+2. **Confiabilidade em Situações Críticas**: Em emergências médicas, um sistema que falha pode custar vidas. Testes automatizados asseguram que o sistema funcione quando mais precisamos.
+
+3. **Experiência do Usuário**: Profissionais de saúde e pacientes dependem de sistemas intuitivos e livres de bugs para foco total no cuidado médico.
+
+#### Benefícios Sociais dos Testes
+
+- **Redução de Erros Médicos**: Sistemas bem testados minimizam falhas que podem levar a diagnósticos incorretos
+- **Eficiência no Atendimento**: Menos bugs significam menos tempo perdido com problemas técnicos
+- **Democratização da Saúde**: Sistemas confiáveis podem ser implementados em locais com menos recursos técnicos
+- **Evolução Tecnológica Segura**: Testes permitem inovação contínua sem comprometer a segurança
+
+#### Nossa Responsabilidade
+
+Como desenvolvedores de sistemas de saúde, temos a responsabilidade ética de:
+
+- Implementar testes abrangentes para todos os cenários críticos
+- Manter a qualidade do código através de testes contínuos
+- Documentar adequadamente os testes para facilitar manutenção
+- Educar outros desenvolvedores sobre a importância dos testes
+
+Os testes de software não são apenas uma boa prática de desenvolvimento - são uma questão de responsabilidade social quando o software impacta diretamente a saúde e bem-estar das pessoas.
 
 ## Uso
 
